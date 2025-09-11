@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Technova AI (The MRU Chatbot)</title>
+  <link rel="shortcut icon" href="fc-mru.png" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, Segoe UI, Roboto, Inter, sans-serif;
+      background: url('mru bg.jpeg') center/cover no-repeat fixed;
+      color: #19398a;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .wrap {
+      width: 100vw;
+      max-width: 880px;
+      height: auto;
+      padding: 24px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .card {
+      background: rgba(26, 39, 84, 0.92);
+      border: 2px solid #19398a;
+      border-radius: 25px;
+      padding: 32px 32px 22px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 12px 38px rgba(25, 57, 138, 0.27);
+      width: 100%;
+      max-width: 870px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      color: #eec13c;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .sub {
+      color: #bfc8e5;
+      font-size: 15px;
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+    #chat {
+      flex: 1 1 auto;
+      min-height: 180px;
+      max-height: 48vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 16px 0;
+      padding: 16px 15px;
+      border-radius: 15px;
+      background: rgba(35, 47, 81, 0.95);
+      border: 1.5px solid rgba(255, 102, 0, 0.3);
+    }
+    .row {
+      display: flex;
+      width: 100%;
+    }
+    .row.user {
+      justify-content: flex-end;
+    }
+    .row.ai {
+      justify-content: flex-start;
+    }
+    .bubble {
+      padding: 1rem 1.15rem;
+      border-radius: 15px;
+      font-size: 1.06rem;
+      font-weight: 450;
+      box-shadow: 0 2px 10px rgba(25, 57, 138, 0.10);
+      border: 2px solid #d3d3d3;
+      max-width: 66vw;
+      min-width: 80px;
+      margin-bottom: 2px;
+      word-break: break-word;
+      white-space: pre-line;
+    }
+    .bubble.user {
+      background: #19398a;
+      color: #eec13c;
+      border: 2px solid #eec13c99;
+      align-self: flex-end;
+      text-align: left;
+      padding: 12px 18px;
+      max-width: 70%;
+      font-weight: 600;
+      border-radius: 16px 16px 4px 16px;
+      word-break: break-word;
+    }
+    .bubble.ai {
+      background: #f9f9f9;
+      color: #1a2754;
+      border: 2px solid #19398a66;
+      align-self: flex-start;
+      text-align: left;
+      padding: 12px 18px;
+      max-width: 70%;
+      font-weight: 500;
+      border-radius: 16px 16px 16px 4px;
+      word-break: break-word;
+    }
+
+    
+    .composer {
+      display: flex;
+      align-items: flex-end;
+      width: 100%;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    textarea {
+      flex: 1;
+      resize: none;
+      min-height: 70px;
+      max-height: 250px;
+      overflow-y: hidden;
+      padding: 16px;
+      border-radius: 15px;
+      border: 2px solid rgba(255, 102, 0, 0.47);
+      background: rgba(26, 39, 84, 0.93);
+      color: #eec13c;
+      outline: none;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      transition: box-shadow 0.2s, background 0.2s;
+      box-sizing: border-box;
+      width: 100%; 
+    }
+    textarea::placeholder {
+      color: #bfc8e5;
+      opacity: 0.73;
+    }
+    textarea:focus {
+      box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.93);
+      background: #22316c;
+      color: #fff;
+    }
+    button {
+      padding: 14px 26px;
+      border-radius: 18px;
+      border: none;
+      background: #ff6600;
+      color: #19398a;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      outline: none;
+      flex-shrink: 0; 
+    }
+    button:hover,
+    button:focus {
+      background: #ee3c45;
+      color: #084d26;
+      transform: scale(1.06);
+      border-color: #ff6600;
+    }
+    button:disabled {
+      opacity: 0.57;
+      cursor: not-allowed;
+    }
+    .tiny {
+      font-size: 13px;
+      color: #bfc8e5;
+      margin-top: 12px;
+      text-align: center;
+      letter-spacing: 0.01em;
+      font-weight: 400;
+    }
+    @media (max-width: 600px) {
+      .card {
+        max-width: 98vw;
+        padding: 12px 4px;
+        max-height: 98vh;
+      }
+      #chat {
+        min-height: 120px;
+        max-height: 40vh;
+        padding: 11px 4px;
+        font-size: 16px;
+      }
+      .bubble {
+        max-width: 96vw;
+        font-size: 15px;
+        padding: 0.9rem 1rem;
+      }
+      textarea {
+        min-height: 60px;
+        font-size: 1rem;
+      }
+      button {
+        padding: 12px 10px;
+        font-size: 1rem;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      .composer {
+        gap: 8px;
+      }
+    }
+    
+  
+  .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 48px;
+  position: sticky;
+}
+.header h1{
+  color: rgb(244, 245, 239);
+ font-size: 25px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 34px;
+}
+
+.nav-links a {
+  color: #fdfafa;
+  text-decoration: none;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  position: relative;
+  transition: color 0.2s;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+.nav-links a:hover {
+  color: #ffd664;
+  background: rgba(255, 214, 100, 0.13);
+  transition: all 0.22s;
+}
+  </style>
+</head>
+<body>
+    <section class="header">
+      <h1 id="h1">Rock Nation</h1>
+             <nav>
+            <ul class="nav-links">
+            <li><a href="expo.html">Home</a></li>
+            <li><a href="albums.html">Albums</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+            <li><a href="book.html">Book Now</a></li>
+             <li><a href="chat.html">chatbox</a></li>
+               </ul>
+        </nav>
+  <div class="wrap">
+    <div class="card">
+      <header style="display: flex; justify-content: space-between; align-items: center; gap: 16px;">
+        <div>
+          <h1>Technova AI (Our Band Chatbot)</h1>
+          <div class="sub">Rock Nation• AI Chatbot</div>
+        </div>
+        <div class="toolbar">
+          <button id="clear">Clear</button>
+          <button id="export">Export</button>
+        </div>
+      </header>
+      <div id="chat"></div>
+      <form id="composer" class="composer">
+        <textarea id="input" placeholder="Type your message… (Shift+Enter = newline)"></textarea>
+        <button id="send" type="submit">Send</button>
+      </form>
+      <div class="tiny">
+        No server, no API calls. Replies are rule-based.<br />
+        Type <b>/help</b> for all commands.<br />
+      </div>
+    </div>
+  </div>
+  <script>
+  const chat = document.getElementById("chat");
+  const input = document.getElementById("input");
+  const form = document.getElementById("composer");
+  const clearBtn = document.getElementById("clear");
+  const exportBtn = document.getElementById("export");
+  const STORAGE = "static-bot:msgs:v1";
+
+  const rules = [
+    {
+      q: /^\/help(\s|$)/i,
+      a: () =>
+        'Command List:\n/time — Current time\n/date — Today’s date\n/joke — Programming joke\n/calc <expr> — Calculate math expression\n/clear history — Erases all messages\n\nSpecial: Ask anything about ‘Mallareddy University’:\n- Courses offered\n- Fee structure\n- Placements info\n- Admission process\n- Hostel details\n\nExamples:\n- What are Mallareddy University courses?\n- Mallareddy University fees for B.Tech?\n- Placements at Mallareddy University?'
+    },
+    {
+     q: /Albums/i,
+a: () =>
+  'Albums where you can listen our all music tracks nad some reference videos also to watch or listen to our albums visit dreaminblue.ac/in Albums page  ',
+    },
+    {
+      q: /band|Band members/i,
+      a: () =>
+        'Our Band members are:\n1.Sid sriram.\n2.Arjith Singh.\n3.Shreya Goshal.\n3.Anirudh.\n To know more about them\nvisit:dreaminblue.ac.in'
+    },
+    {
+      q: /|/i,
+      a: () =>
+        `Placements: Companies like Infosys, Wipro, TCS, Cognizant, Amazon, etc. visit the campus.\nAverage package: 4–6 LPA.\nTop offers: 20+ LPA.\nUniversity has a dedicated placement cell.`
+    },
+    {
+      q: /admission|admissions/i,
+      a: () =>
+       `Admission Process:\n- Apply online via MRU portal.\n- Appear for entrance exams (like MRUCET / JEE / relevant test).\n- Counseling + document verification.\n- Pay fee to confirm admission.`
+    },
+    {
+      q: /hostel/i,
+      a: () =>
+        `Hostel Facilities:\n- Separate hostels for boys and girls.\n- WiFi, study halls, mess with veg/non-veg options.\n- 24/7 security.\n- Recreation and sports facilities.`
+    },
+    { q: /time/i, a: () => new Date().toLocaleTimeString() },
+    { q: /date/i, a: () => new Date().toLocaleDateString() },
+    { q: /joke/i, a: () => `Why do programmers prefer dark mode?\nBecause light attracts bugs! 😆` },
+    { q: /calc (.+)/i, a: (text, match) => safeCalc(match[1]) },
+    {
+      q: /clear history/i,
+      a: () => {
+        localStorage.removeItem(STORAGE);
+        render();
+        return "Chat history cleared.";
+      }
+    },
+    {
+      q: /.*/,
+      a: (text) =>
+        `I didn’t learn that yet.\nYou said: “${text}”\nEdit the rules in code to teach me! or use /help.\n`
+    }
+  ];
+
+  function safeCalc(expr) {
+    try {
+      if (/[^0-9+\-*/().%\s]/.test(expr)) return "Only basic math allowed.\n";
+      const val = Function('"use strict"; return (' + expr + ')')();
+      return "= " + val + "\n";
+    } catch (e) {
+      return "Couldn’t compute that.\n";
+    }
+  }
+
+  function load() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE)) || [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function save(msgs) {
+    localStorage.setItem(STORAGE, JSON.stringify(msgs));
+  }
+
+  function row(role, text) {
+    const r = document.createElement("div");
+    r.className = "row " + role;
+    const b = document.createElement("div");
+    b.className = "bubble " + (role === "user" ? "user" : "ai");
+    b.textContent = text;
+    r.appendChild(b);
+    chat.appendChild(r);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  function render() {
+    chat.innerHTML = "";
+    load().forEach((m) => row(m.role, m.content));
+  }
+
+  function replyTo(text) {
+    for (let i = 0; i < rules.length; i++) {
+      const rule = rules[i];
+      const match = text.match(rule.q);
+      if (match) {
+        return typeof rule.a === "function" ? rule.a(text, match) : rule.a;
+      }
+    }
+    return "";
+  }
+
+  function push(role, content) {
+    let data = load();
+    data.push({ role, content });
+    save(data);
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = "";
+    push("user", text);
+    row("user", text);
+    const ans = replyTo(text);
+    push("ai", ans);
+    row("ai", ans);
+  });
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+
+  clearBtn.addEventListener("click", () => {
+    localStorage.removeItem(STORAGE);
+    render();
+  });
+
+  exportBtn.addEventListener("click", () => {
+    const blob = new Blob([localStorage.getItem(STORAGE) || "[]"], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "chat_history.json";
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 500);
+  });
+
+  if (load().length === 0) {
+    push("ai", 'Hi! I am Technova AI, your MRU chatbot. Type "/help" for features or ask campus info.');
+  }
+  render();
+  </script>
+</body>
+</html>

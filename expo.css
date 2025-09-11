@@ -1,0 +1,86 @@
+*{
+  box-sizing: border-box;
+  
+}
+body{
+    background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(musicband1.jpg);
+    background-size: cover;
+  }
+  .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 48px;
+  position: sticky;
+}
+.header h1{
+  color: rgb(244, 245, 239);
+ font-size: 25px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 34px;
+}
+
+.nav-links a {
+  color: #fdfafa;
+  text-decoration: none;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  position: relative;
+  transition: color 0.2s;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+.nav-links a:hover {
+  color: #ffd664;
+  background: rgba(255, 214, 100, 0.13);
+  transition: all 0.22s;
+}
+
+
+        footer {
+  padding: 26px 0 20px 0;
+  background: #222854;
+  color: #f6f7fa;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin-top: 250px;
+}
+.lodos{
+    gap: 25px;
+}
+.mid{
+  margin-top: 100px;
+ text-align: center;
+  color: rgb(250, 250, 251);
+
+}
+#btn{
+  margin-right: 300px;
+  padding: 5px;
+  padding-left: 50px ;
+  padding-right:50px; 
+    
+}
+#btn:hover {
+  background-color: #1974ca;
+}
+#btn a {
+  color: #0e0e0f;
+  text-decoration: none;
+
+}
+.mid h2,p{
+  padding-right: 90px;
+  font-size: 20px;
+
+
+}
+.mid h1{
+    font-size: 50px;
+    font-weight: 100px;
+}
