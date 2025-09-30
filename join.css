@@ -1,0 +1,99 @@
+/* Main layout for the join page */
+.join-page-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem 1rem;
+    align-items: flex-start;
+}
+
+/* Styling for each form container */
+.join-container {
+    flex: 1 1 450px; /* Flex-grow, flex-shrink, flex-basis */
+    max-width: 550px;
+    padding: 2rem 2.5rem;
+    background: rgba(10, 25, 47, 0.75); /* Dark blue from theme */
+    border: 1px solid rgba(255, 153, 0, 0.2); /* Subtle orange border */
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    text-align: center;
+    color: var(--text-color);
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.join-container:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.join-container h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: var(--mic-color); /* Orange for titles */
+}
+
+.join-container p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #ccc;
+}
+
+/* Form element styling */
+.join-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.join-form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #ddd;
+}
+
+.join-form input,
+.join-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.join-form input:focus,
+.join-form textarea:focus {
+    outline: none;
+    border-color: var(--mic-color); /* Orange focus */
+    box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.2);
+}
+
+.join-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.join-form button {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--mic-color); /* Orange */
+    color: #0a192f; /* Dark Blue text */
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.join-form button:hover {
+    background-color: #ffae42; /* Lighter orange on hover */
+    transform: translateY(-2px);
+}

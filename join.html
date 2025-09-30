@@ -47,43 +47,45 @@
         <button id="mic-btn" title="Voice Commands">🎸</button>
     </section>
 
-    <div class="join-container">
-        <h1 data-key="join_title_fan">Join the Nation!</h1>
-        <p data-key="join_subtitle_fan">Sign up to get the latest news, tour dates, and exclusive content straight to your inbox.</p>
-        <form class="join-form" action="https://formspree.io/f/your_form_id" method="POST"> <!-- TODO: Replace with your Formspree ID -->
-            <label for="fan-name">Your Name</label>
-            <input type="text" id="fan-name" name="name" placeholder="Your Name" required>
-            <label for="fan-email">Your Email Address</label>
-            <input type="email" id="fan-email" name="email" placeholder="Your Email Address" required>
-            <label for="fan-location">Your City/Country (Optional)</label>
-            <input type="text" id="fan-location" name="location" placeholder="Your City/Country">
-            <label for="fan-song">Your Favorite Song (Optional)</label>
-            <input type="text" id="fan-song" name="favorite_song" placeholder="Your Favorite Song">
-            <label for="birthday" data-key="birthday_label">Birthday (Optional)</label>
-            <input type="date" id="birthday" name="birthday">
-            <button type="submit" data-key="subscribe_btn">Subscribe</button>
-        </form>
-    </div>
+    <main class="join-page-wrapper">
+        <div class="join-container">
+            <h1 data-key="join_title_fan">Join the Nation!</h1>
+            <p data-key="join_subtitle_fan">Sign up to get the latest news, tour dates, and exclusive content straight to your inbox.</p>
+            <form class="join-form" action="https://formspree.io/f/your_form_id" method="POST"> <!-- TODO: Replace with your Formspree ID -->
+                <label for="fan-name">Your Name</label>
+                <input type="text" id="fan-name" name="name" placeholder="Your Name" required>
+                <label for="fan-email">Your Email Address</label>
+                <input type="email" id="fan-email" name="email" placeholder="Your Email Address" required>
+                <label for="fan-location">Your City/Country (Optional)</label>
+                <input type="text" id="fan-location" name="location" placeholder="Your City/Country">
+                <label for="fan-song">Your Favorite Song (Optional)</label>
+                <input type="text" id="fan-song" name="favorite_song" placeholder="Your Favorite Song">
+                <label for="birthday" data-key="birthday_label">Birthday (Optional)</label>
+                <input type="date" id="birthday" name="birthday">
+                <button type="submit" data-key="subscribe_btn">Subscribe</button>
+            </form>
+        </div>
 
-    <div class="join-container">
-        <h1 data-key="join_title_band">Want to Join the Band?</h1>
-        <p data-key="join_subtitle_band">Think you have what it takes to rock with us? Fill out the form below with your details and a link to your work. We're always looking for new talent!</p>
-        <form class="join-form" action="https://formspree.io/f/your_audition_form_id" method="POST"> <!-- TODO: Replace with your Formspree ID -->
-            <label for="audition-name">Your Full Name</label>
-            <input type="text" id="audition-name" name="name" placeholder="Your Full Name" required>
-            <label for="audition-email">Your Email Address</label>
-            <input type="email" id="audition-email" name="email" placeholder="Your Email Address" required>
-            <label for="audition-phone">Your Phone Number</label>
-            <input type="tel" id="audition-phone" name="phone" placeholder="Your Phone Number" required>
-            <label for="audition-instrument">Instrument(s) You Play / Vocal Role</label>
-            <input type="text" id="audition-instrument" name="instrument" placeholder="e.g., Guitar, Vocals" required>
-            <label for="audition-link">Link to Demo</label>
-            <input type="url" id="audition-link" name="demo_link" placeholder="Link to YouTube, SoundCloud, etc." required>
-            <label for="audition-message">About Your Experience</label>
-            <textarea id="audition-message" name="message" placeholder="Tell us a bit about your musical experience..." rows="4"></textarea>
-            <button type="submit" data-key="audition_btn">Submit Audition</button>
-        </form>
-    </div>
+        <div class="join-container">
+            <h1 data-key="join_title_band">Want to Join the Band?</h1>
+            <p data-key="join_subtitle_band">Think you have what it takes to rock with us? Fill out the form below with your details and a link to your work. We're always looking for new talent!</p>
+            <form class="join-form" action="https://formspree.io/f/your_audition_form_id" method="POST"> <!-- TODO: Replace with your Formspree ID -->
+                <label for="audition-name">Your Full Name</label>
+                <input type="text" id="audition-name" name="name" placeholder="Your Full Name" required>
+                <label for="audition-email">Your Email Address</label>
+                <input type="email" id="audition-email" name="email" placeholder="Your Email Address" required>
+                <label for="audition-phone">Your Phone Number</label>
+                <input type="tel" id="audition-phone" name="phone" placeholder="Your Phone Number" required>
+                <label for="audition-instrument">Instrument(s) You Play / Vocal Role</label>
+                <input type="text" id="audition-instrument" name="instrument" placeholder="e.g., Guitar, Vocals" required>
+                <label for="audition-link">Link to Demo</label>
+                <input type="url" id="audition-link" name="demo_link" placeholder="Link to YouTube, SoundCloud, etc." required>
+                <label for="audition-message">About Your Experience</label>
+                <textarea id="audition-message" name="message" placeholder="Tell us a bit about your musical experience..." rows="4"></textarea>
+                <button type="submit" data-key="audition_btn">Submit Audition</button>
+            </form>
+        </div>
+    </main>
 
     <footer>
        <nav class="lodos">

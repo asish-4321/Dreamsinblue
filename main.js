@@ -110,4 +110,55 @@ document.addEventListener('DOMContentLoaded', () => {
         langSelect.value = savedLang;
         setLanguage(savedLang);
     }
+
+    // --- Active Navigation Link ---
+    const currentPagePath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-links a, .sidebar a');
+
+    navLinks.forEach(link => {
+        // Create a URL object to easily compare pathnames, ignoring domain
+        const linkPath = new URL(link.href).pathname;
+        if (linkPath === currentPagePath) {
+            link.classList.add('active-link');
+        }
+    });
+
+    // --- Shrinking Header & Back to Top Button ---
+    const header = document.querySelector('.header');
+    const midSection = document.querySelector('.mid'); // For home page parallax
+    const backToTopBtn = document.getElementById('back-to-top-btn');
+
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+
+        // Header shrink effect
+        if (header) {
+            if (scrollPosition > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        }
+
+        // Back to Top button visibility
+        if (backToTopBtn) {
+            if (scrollPosition > 300) { // Show button after 300px
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }
+
+        // Parallax effect for home page content
+        if (midSection) {
+            midSection.style.transform = `translateY(${scrollPosition * 0.4}px)`;
+        }
+    });
+
+    // Back to Top click event
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 });
