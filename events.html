@@ -7,7 +7,10 @@
     <!-- Page-specific CSS -->
     <link rel="stylesheet" href="events.css">
 </head>
-<body data-theme="dark">
+<body data-theme="dark" class="loading">
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
     <div id="overlay" onclick="closeNav()"></div>
     <div id="sidebar" class="sidebar">
       <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
@@ -25,13 +28,13 @@
         <h1 id="h1">Rock Nation</h1>
        <nav>
   <ul class="nav-links">
-    <li><a href="/Dreamsinblue/index.html">Home</a></li>
-    <li><a href="/Dreamsinblue/albums.html">Albums</a></li>
-    <li><a href="/Dreamsinblue/events.html">Events</a></li>
-    <li><a href="/Dreamsinblue/faqs.html">FAQs</a></li>
-    <li><a href="/Dreamsinblue/join.html">Join</a></li>
-    <li><a href="/Dreamsinblue/book.html">Book Now</a></li>
-    <li><a href="/Dreamsinblue/chat.html">Chatbox</a></li>
+    <li><a href="/Dreamsinblue/index.html" data-key="nav_home">Home</a></li>
+    <li><a href="/Dreamsinblue/albums.html" data-key="nav_albums">Albums</a></li>
+    <li><a href="/Dreamsinblue/events.html" data-key="nav_events">Events</a></li>
+    <li><a href="/Dreamsinblue/faqs.html" data-key="nav_faqs">FAQs</a></li>
+    <li><a href="/Dreamsinblue/join.html" data-key="nav_join">Join</a></li>
+    <li><a href="/Dreamsinblue/book.html" data-key="nav_book">Book Now</a></li>
+    <li><a href="/Dreamsinblue/chat.html" data-key="nav_chatbox">Chatbox</a></li>
   </ul>
 </nav>
  <button id="mic-btn" title="Voice Commands">🎸</button>
@@ -41,6 +44,13 @@
 
     <table>
         <thead>
+            <tr>
+                <th>Date</th>
+                <th>City</th>
+                <th>Venue</th>
+                <th>Time</th>
+                <th>Tickets</th>
+            </tr>
         </thead>
         <tbody>
             <tr>
@@ -210,19 +220,22 @@
     </table>
     <footer>
        <nav class="lodos">
-   <a href="https://share.google/n7slkBgBkH8BDnFSy"><img src="assets/instgram logo 2.png" alt="img" height="20px" width="20px"></a>
-   <a href="https://share.google/3Bi2MlYUhAqQ2VBtm"><img src="assets/yt logo .png" alt="img" height="20px" width="20px"></a>
-<a href="https://share.google/OBps0JlrQHSxq4wz0"><img src="assets/Screenshot 2025-09-05 104337.png" alt="img" height="15px" width="15px"></a>
-   <a href="https://share.google/ambUxQYodVppYMhAw"><img src="assets/Screenshot 2025-09-05 104654.png" alt="img" height="15px" width="20px"></a>
-
+           <a href="https://share.google/n7slkBgBkH8BDnFSy"><img src="assets/instgram logo 2.png" alt="Instagram" height="20px" width="20px"></a>
+           <a href="https://share.google/3Bi2MlYUhAqQ2VBtm"><img src="assets/yt logo .png" alt="YouTube" height="20px" width="20px"></a>
+           <a href="https://share.google/OBps0JlrQHSxq4wz0"><img src="assets/Screenshot 2025-09-05 104337.png" alt="X (formerly Twitter)" height="15px" width="15px"></a>
+           <a href="https://share.google/ambUxQYodVppYMhAw"><img src="assets/Screenshot 2025-09-05 104654.png" alt="Facebook" height="15px" width="20px"></a>
    </nav>
-        --------------------------------&copy;<a href="#">copyright disclaimer</a>-----------------------------------
+        <span class="divider">--------------------------------</span>
+        &copy;<a href="#" data-key="copyright">copyright disclaimer</a>
+        <span class="divider">-----------------------------------</span>
     </footer>
     <script
       src="https://app.livechatai.com/embed.js"
       data-id="cmfz1zexb0001la04iulo7jea"
       async defer>
     </script>
+    <!-- Back to Top Button -->
+    <button id="back-to-top-btn" title="Go to top">↑</button>
     <script src="js/main.js"></script>
 </body>
 </html>

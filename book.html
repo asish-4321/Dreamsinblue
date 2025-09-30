@@ -7,7 +7,10 @@
     <!-- Page-specific CSS -->
     <link rel="stylesheet" href="book.css">
 </head>
-<body data-theme="dark">
+<body data-theme="dark" class="loading">
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
     <div id="overlay" onclick="closeNav()"></div>
     <div id="sidebar" class="sidebar">
       <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
@@ -25,13 +28,13 @@
       <h1 id="h1">Rock Nation</h1>
            <nav>
   <ul class="nav-links">
-    <li><a href="/Dreamsinblue/index.html">Home</a></li>
-    <li><a href="/Dreamsinblue/albums.html">Albums</a></li>
-    <li><a href="/Dreamsinblue/events.html">Events</a></li>
-    <li><a href="/Dreamsinblue/faqs.html">FAQs</a></li>
-    <li><a href="/Dreamsinblue/join.html">Join</a></li>
-    <li><a href="/Dreamsinblue/book.html">Book Now</a></li>
-    <li><a href="/Dreamsinblue/chat.html">Chatbox</a></li>
+    <li><a href="/Dreamsinblue/index.html" data-key="nav_home">Home</a></li>
+    <li><a href="/Dreamsinblue/albums.html" data-key="nav_albums">Albums</a></li>
+    <li><a href="/Dreamsinblue/events.html" data-key="nav_events">Events</a></li>
+    <li><a href="/Dreamsinblue/faqs.html" data-key="nav_faqs">FAQs</a></li>
+    <li><a href="/Dreamsinblue/join.html" data-key="nav_join">Join</a></li>
+    <li><a href="/Dreamsinblue/book.html" data-key="nav_book">Book Now</a></li>
+    <li><a href="/Dreamsinblue/chat.html" data-key="nav_chatbox">Chatbox</a></li>
   </ul>
 </nav>
  <button id="mic-btn" title="Voice Commands">🎸</button>
@@ -40,34 +43,34 @@
     <h1>Book Us Now</h1>
     <form action="https://formspree.io/f/mdklbwjv" method="post">
       
-      <label for="name">Full Name:</label>
-      <input type="text" id="name" name="name" placeholder="Your full name" required><br><br>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required>
 
-      <label for="email">Email Address:</label>
-      <input type="email" id="email" name="email" placeholder="you@example.com" required><br><br>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
 
-      <label for="phone">Contact Number:</label>
-      <input type="tel" id="phone" name="phone" placeholder="e.g. +91-9876543214" required><br><br>
+      <label for="phone">Contact Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="e.g. +91-9876543214" required>
 
-      <label for="eventType">Event Type:</label>
-      <select id="eventType" name="event_type" required><br><br>
+      <label for="eventType">Event Type</label>
+      <select id="eventType" name="event_type" required>
         <option value="" disabled selected>Select an option</option>
         <option value="Concert">Concert</option>
         <option value="Private Party">Private Party</option>
         <option value="Festival">Festival</option>
         <option value="Corporate Event">Corporate Event</option>
         <option value="Other">Other</option>
-      </select><br><br>
+      </select>
 
-      <label for="date">Event Date:</label>
+      <label for="date">Event Date</label>
       <input type="date" id="date" 
-      name="event_date" required> <br><br>
+      name="event_date" required> 
 
-      <label for="location">Event Location:</label>
-      <input type="text" id="location" name="event_location" placeholder="City or venue" required><br><br>
+      <label for="location">Event Location</label>
+      <input type="text" id="location" name="event_location" placeholder="City or venue" required>
 
-      <label for="message">Additional Message:</label>
-      <textarea id="message" name="message" placeholder="Any special notes or requests..."></textarea><br><br>
+      <label for="message">Additional Message</label>
+      <textarea id="message" name="message" placeholder="Any special notes or requests..."></textarea>
 
       <button type="submit">Submit Booking Request</button>
     </form>
@@ -75,19 +78,22 @@
 
        <footer>
        <nav class="lodos">
-   <a href="https://share.google/n7slkBgBkH8BDnFSy"><img src="assets/instgram logo 2.png" alt="img" height="20px" width="20px"></a>
-   <a href="https://share.google/3Bi2MlYUhAqQ2VBtm"><img src="assets/instgram logo 2.png" alt="img" height="20px" width="20px"></a>
-<a href="https://share.google/OBps0JlrQHSxq4wz0"><img src="assets/Screenshot 2025-09-05 104337.png" alt="img" height="15px" width="15px"></a>
-   <a href="https://share.google/ambUxQYodVppYMhAw"><img src="assets/Screenshot 2025-09-05 104654.png" alt="img" height="15px" width="20px"></a>
-
+           <a href="https://share.google/n7slkBgBkH8BDnFSy"><img src="assets/instgram logo 2.png" alt="Instagram" height="20px" width="20px"></a>
+           <a href="https://share.google/3Bi2MlYUhAqQ2VBtm"><img src="assets/yt logo .png" alt="YouTube" height="20px" width="20px"></a>
+           <a href="https://share.google/OBps0JlrQHSxq4wz0"><img src="assets/Screenshot 2025-09-05 104337.png" alt="X (formerly Twitter)" height="15px" width="15px"></a>
+           <a href="https://share.google/ambUxQYodVppYMhAw"><img src="assets/Screenshot 2025-09-05 104654.png" alt="Facebook" height="15px" width="20px"></a>
    </nav>
-        --------------------------------&copy;<a href="#">copyright disclaimer</a>-----------------------------------
+        <span class="divider">--------------------------------</span>
+        &copy;<a href="#" data-key="copyright">copyright disclaimer</a>
+        <span class="divider">-----------------------------------</span>
     </footer>
     <script
       src="https://app.livechatai.com/embed.js"
       data-id="cmfz1zexb0001la04iulo7jea"
       async defer>
     </script>
+    <!-- Back to Top Button -->
+    <button id="back-to-top-btn" title="Go to top">↑</button>
     <script src="js/main.js"></script>
     </body>
     </html>

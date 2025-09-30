@@ -7,7 +7,10 @@
     <!-- Page-specific CSS -->
     <link rel="stylesheet" href="faqs.css">
 </head>
-<body data-theme="dark">
+<body data-theme="dark" class="loading">
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
     <div id="overlay" onclick="closeNav()"></div>
     <div id="sidebar" class="sidebar">
       <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
@@ -25,13 +28,13 @@
       <h1 id="h1">Rock Nation</h1>
           <nav>
   <ul class="nav-links">
-    <li><a href="/Dreamsinblue/index.html">Home</a></li>
-    <li><a href="/Dreamsinblue/albums.html">Albums</a></li>
-    <li><a href="/Dreamsinblue/events.html">Events</a></li>
-    <li><a href="/Dreamsinblue/faqs.html">FAQs</a></li>
-    <li><a href="/Dreamsinblue/join.html">Join</a></li>
-    <li><a href="/Dreamsinblue/book.html">Book Now</a></li>
-    <li><a href="/Dreamsinblue/chat.html">Chatbox</a></li>
+    <li><a href="/Dreamsinblue/index.html" data-key="nav_home">Home</a></li>
+    <li><a href="/Dreamsinblue/albums.html" data-key="nav_albums">Albums</a></li>
+    <li><a href="/Dreamsinblue/events.html" data-key="nav_events">Events</a></li>
+    <li><a href="/Dreamsinblue/faqs.html" data-key="nav_faqs">FAQs</a></li>
+    <li><a href="/Dreamsinblue/join.html" data-key="nav_join">Join</a></li>
+    <li><a href="/Dreamsinblue/book.html" data-key="nav_book">Book Now</a></li>
+    <li><a href="/Dreamsinblue/chat.html" data-key="nav_chatbox">Chatbox</a></li>
   </ul>
 </nav>
  <button id="mic-btn" title="Voice Commands">🎸</button>
@@ -98,6 +101,8 @@
       data-id="cmfz1zexb0001la04iulo7jea"
       async defer>
     </script>
+    <!-- Back to Top Button -->
+    <button id="back-to-top-btn" title="Go to top">↑</button>
     <script src="js/main.js"></script>
 </body>
 </html>

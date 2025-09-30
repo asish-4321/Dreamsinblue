@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="join.css"> <!-- Assuming you will create a join.css -->
 </head>
-<body data-theme="dark">
+<body data-theme="dark" class="loading">
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
     <div id="overlay" onclick="closeNav()"></div>
     <div id="sidebar" class="sidebar">
       <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
@@ -98,6 +101,8 @@
     </footer>
 
     <script src="https://app.livechatai.com/embed.js" data-id="cmfz1zexb0001la04iulo7jea" async defer></script>
+    <!-- Back to Top Button -->
+    <button id="back-to-top-btn" title="Go to top">↑</button>
     <script src="js/main.js"></script>
 </body>
 </html>
