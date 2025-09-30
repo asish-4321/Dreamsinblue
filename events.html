@@ -4,13 +4,22 @@
     <title>Document</title>
     <link rel="stylesheet" href="events.css">
     <style>
-      #mic-btn {
+    #mic-btn {
         background: none;
         border: none;
         font-size: 24px;
         cursor: pointer;
         padding: 0 10px;
-        color: #fff;
+        color: #ffd700; /* Gold color */
+        text-shadow: 1px 1px 2px #000; /* Add a text shadow for better visibility */
+        transition: transform 0.2s, color 0.2s;
+        animation: pulse 1.5s infinite alternate; /* Add a subtle pulse animation */
+    }
+
+    #mic-btn:hover {
+        transform: scale(1.2);
+        color: #fff; /* Change color on hover */
+    }
         transition: transform 0.2s;
       }
       #mic-btn:hover { transform: scale(1.2); }
@@ -255,7 +264,7 @@
         }
       };
 
-      recognition.onerror = (event) => {
+       micBtn.onerror = (event) => {
         alert('Error occurred in recognition: ' + event.error);
       };
     } else {
@@ -270,3 +279,12 @@
     </script>
 </body>
 </html>
+    <style>
+    @keyframes pulse {
+        from {
+            transform: scale(1);
+        }
+        to {
+            transform: scale(1.1);
+        }
+    }
