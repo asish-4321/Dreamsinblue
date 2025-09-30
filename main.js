@@ -1,3 +1,15 @@
+window.onload = () => {
+    const preloader = document.getElementById('preloader');
+    const body = document.body;
+
+    if (preloader) {
+        // Fade out the preloader
+        preloader.style.opacity = '0';
+        preloader.style.visibility = 'hidden';
+        body.classList.remove('loading');
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- Sidebar Navigation ---
     const sidebar = document.getElementById("sidebar");
