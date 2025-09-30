@@ -3,6 +3,18 @@
 <head>
     <title>Document</title>
     <link rel="stylesheet" href="events.css">
+    <style>
+      #mic-btn {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 0 10px;
+        color: #fff;
+        transition: transform 0.2s;
+      }
+      #mic-btn:hover { transform: scale(1.2); }
+    </style>
 </head>
 <body>
     <section class="header">
@@ -20,8 +32,7 @@
     <li><a href="/Dreamsinblue/chat.html">Chatbox</a></li>
   </ul>
 </nav>
-
-
+ <button id="mic-btn" title="Voice Commands">🎤</button>
     </section>
 </head>
 <body>
@@ -214,6 +225,44 @@
    </nav>
         --------------------------------&copy;<a href="#">copyright disclaimer</a>-----------------------------------
     </footer>
-    
+    <script>
+    const micBtn = document.getElementById('mic-btn');
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (SpeechRecognition) {
+      const recognition = new SpeechRecognition();
+
+      const commands = {
+        'home': '/Dreamsinblue/index.html',
+        'albums': '/Dreamsinblue/albums.html',
+        'events': '/Dreamsinblue/events.html',
+        'faqs': '/Dreamsinblue/faqs.html',
+        'book now': '/Dreamsinblue/book.html',
+        'chatbox': '/Dreamsinblue/chat.html'
+      };
+
+      micBtn.addEventListener('click', () => {
+        recognition.start();
+      });
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript.trim().toLowerCase();
+        console.log('Heard:', transcript);
+
+        if (commands[transcript]) {
+          window.location.href = commands[transcript];
+        } else {
+          alert(`Command not recognized: "${transcript}"`);
+        }
+      };
+
+      recognition.onerror = (event) => {
+        alert('Error occurred in recognition: ' + event.error);
+      };
+    } else {
+      micBtn.style.display = 'none';
+      console.log('Speech Recognition not supported in this browser.');
+    }
+    </script>
 </body>
 </html>
