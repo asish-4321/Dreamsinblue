@@ -126,11 +126,15 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         recognition.onresult = (event) => {
-            const transcript = event.results[0][0].transcript.trim().toLowerCase();
-            if (commands[transcript]) {
-                window.location.href = commands[transcript];
-            } else {
-                alert(`Command not recognized: "${transcript}".\n\nAvailable commands are: home, albums, events, faqs, join, book now, chatbox.`);
+            // Iterate through all results to find a matching command
+            for (const result of event.results) {
+                const transcript = result[0].transcript.trim().toLowerCase();
+                console.log('Heard command:', transcript); // For debugging
+                if (commands[transcript]) {
+                    console.log(`Command recognized: "${transcript}", navigating to ${commands[transcript]}`);
+                    window.location.href = commands[transcript];
+                    return; // Stop after finding a valid command
+                }
             }
         };
 

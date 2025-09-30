@@ -1,94 +1,9 @@
-/* Theme Variables */
-:root {
-  --bg-color: #ffffff;
-  --text-color: #111111;
-  --header-bg: rgba(240, 240, 240, 0.85);
-  --nav-link-color: #333;
-  --nav-link-hover-color: #007bff;
-  --nav-link-hover-bg: rgba(0, 123, 255, 0.1);
-  --footer-bg: #f8f9fa;
-  --footer-text-color: #333;
-  --sidebar-bg: #f8f9fa;
-  --sidebar-link-color: #333;
-  --sidebar-link-hover: #007bff;
-}
-
+/* Page-specific styles for index.html */
 [data-theme="dark"] {
-  --bg-color: transparent; /* Uses body's background image */
-  --text-color: #fdfafa;
-  --header-bg: rgba(0, 0, 0, 0.5);
-  --nav-link-color: #fdfafa;
   --nav-link-hover-color: #ffd664;
   --nav-link-hover-bg: rgba(255, 214, 100, 0.13);
-  --footer-bg: #222854;
-  --footer-text-color: #f6f7fa;
-  --sidebar-bg: #111;
-  --sidebar-link-color: #818181;
-  --sidebar-link-hover: #f1f1f1;
 }
 
-*{
-  box-sizing: border-box;
-  
-}
-body{
-    background: var(--bg-color, transparent);
-    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(assets/musicband1.jpg);
-    background-size: cover;
-    color: var(--text-color);
-    transition: background-color 0.3s, color 0.3s;
-  }
-  .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 48px;
-  position: sticky;
-  background-color: var(--header-bg);
-  backdrop-filter: blur(5px);
-}
-.header h1{
-  color: rgb(244, 245, 239);
- font-size: 25px;
-}
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 34px;
-}
-
-.nav-links a {
-  color: var(--nav-link-color);
-  text-decoration: none;
-  font-size: 1.08rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  position: relative;
-  transition: color 0.2s;
-  padding: 6px 12px;
-  border-radius: 6px;
-}
-.nav-links a:hover {
-  color: var(--nav-link-hover-color);
-  background: var(--nav-link-hover-bg);
-  transition: all 0.22s;
-}
-
-
-        footer {
-  padding: 26px 0 20px 0;
-  background: var(--footer-bg);
-  color: var(--footer-text-color);
-  text-align: center;
-  font-size: 16px;
-  letter-spacing: 2px;
-  margin-top: 250px;
-}
-.lodos{
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-}
 .mid{
   margin-top: 100px;
  text-align: center;
@@ -97,6 +12,10 @@ body{
 }
 .mid > * {
   opacity: 0; /* Initially hide animated elements */
+}
+
+.mid h1, .mid h2, .mid p, #btn {
+  animation-timing-function: ease-out;
 }
 
 #btn{
