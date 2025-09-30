@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Technova AI (The MRU Chatbot)</title>
-  <link rel="shortcut icon" href="fc-mru.png" type="image/x-icon">
+  <title>Rock Nation - Band Chatbot</title>
+  <link rel="shortcut icon" href="assets/devara.png" type="image/x-icon">
   <style>
     body {
       margin: 0;
@@ -250,27 +250,20 @@
   transition: all 0.22s;
 }
       #mic-btn {
-    #mic-btn {
         background: none;
         border: none;
         font-size: 24px;
         cursor: pointer;
         padding: 0 10px;
-        color: #ffd700; /* Gold color */
-        text-shadow: 1px 1px 2px #000; /* Add a text shadow for better visibility */
+        color: #ffd700;
+        text-shadow: 1px 1px 2px #000;
         transition: transform 0.2s, color 0.2s;
-        animation: pulse 1.5s infinite alternate; /* Add a subtle pulse animation */
-    }
-
-    #mic-btn:hover {
-        transform: scale(1.2);
-        color: #fff; /* Change color on hover */
-    }
-        transition: transform 0.2s;
+        animation: pulse 1.5s infinite alternate;
         position: absolute;
         right: 10px;
       }
-      #mic-btn:hover { transform: scale(1.2); }
+      #mic-btn:hover { transform: scale(1.2); color: #fff; }
+      @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.1); } }
   </style>
 </head>
 <body>
@@ -282,16 +275,17 @@
     <li><a href="/Dreamsinblue/albums.html">Albums</a></li>
     <li><a href="/Dreamsinblue/events.html">Events</a></li>
     <li><a href="/Dreamsinblue/faqs.html">FAQs</a></li>
+    <li><a href="/Dreamsinblue/join.html">Join</a></li>
     <li><a href="/Dreamsinblue/book.html">Book Now</a></li>
     <li><a href="/Dreamsinblue/chat.html">Chatbox</a></li>
   </ul>
 </nav>
- <button id="mic-btn" title="Voice Commands">🎤</button>
-  <div class="wrap">
+ <button id="mic-btn" title="Voice Commands">🎸</button>
+  <div class="wrap" style="position: relative; top: -50px;">
     <div class="card">
       <header style="display: flex; justify-content: space-between; align-items: center; gap: 16px;">
         <div>
-          <h1>Technova AI (Our Band Chatbot)</h1>
+          <h1>Band Chatbot</h1>
           <div class="sub">Rock Nation• AI Chatbot</div>
         </div>
         <div class="toolbar">
@@ -305,7 +299,7 @@
         <button id="send" type="submit">Send</button>
       </form>
       <div class="tiny">
-        No server, no API calls. Replies are rule-based.<br />
+        This is a simple, rule-based chatbot.<br />
         Type <b>/help</b> for all commands.<br />
       </div>
     </div>
@@ -321,37 +315,31 @@
   const rules = [
     {
       q: /^\/help(\s|$)/i,
-      a: () =>
-        'Command List:\n/time — Current time\n/date — Today’s date\n/joke — Programming joke\n/calc <expr> — Calculate math expression\n/clear history — Erases all messages\n\nSpecial: Ask anything about ‘Mallareddy University’:\n- Courses offered\n- Fee structure\n- Placements info\n- Admission process\n- Hostel details\n\nExamples:\n- What are Mallareddy University courses?\n- Mallareddy University fees for B.Tech?\n- Placements at Mallareddy University?'
+      a: () => 'Command List:\n/albums — See our albums\n/events — Find upcoming shows\n/members — Who is in the band?\n/joke — Hear a music joke\n/clear history — Erases all messages'
     },
     {
-     q: /Albums/i,
-a: () =>
-  'Albums where you can listen our all music tracks nad some reference videos also to watch or listen to our albums visit dreaminblue.ac/in Albums page  ',
+     q: /album|albums|music/i,
+     a: () => 'You can listen to all our music on the Albums page. We have tracks and reference videos available. Visit the page here: /Dreamsinblue/albums.html',
     },
     {
-      q: /band|Band members/i,
-      a: () =>
-        'Our Band members are:\n1.Sid sriram.\n2.Arjith Singh.\n3.Shreya Goshal.\n3.Anirudh.\n To know more about them\nvisit:dreaminblue.ac.in'
+      q: /band members|members|who is in the band/i,
+      a: () => 'Our Band members are:\n1. Sid Sriram\n2. Arjith Singh\n3. Shreya Goshal\n4. Anirudh.\nWant to join us? Check out the Join page!'
     },
     {
-      q: /|/i,
-      a: () =>
-        `Placements: Companies like Infosys, Wipro, TCS, Cognizant, Amazon, etc. visit the campus.\nAverage package: 4–6 LPA.\nTop offers: 20+ LPA.\nUniversity has a dedicated placement cell.`
+      q: /event|events|tour|shows/i,
+      a: () => 'All our upcoming shows and tour dates are listed on our Events page. You can find dates, venues, and ticket links there: /Dreamsinblue/events.html'
     },
     {
-      q: /admission|admissions/i,
-      a: () =>
-       `Admission Process:\n- Apply online via MRU portal.\n- Appear for entrance exams (like MRUCET / JEE / relevant test).\n- Counseling + document verification.\n- Pay fee to confirm admission.`
+      q: /book|booking/i,
+      a: () => 'To book the band for an event, please fill out the form on our "Book Now" page: /Dreamsinblue/book.html'
     },
     {
-      q: /hostel/i,
-      a: () =>
-        `Hostel Facilities:\n- Separate hostels for boys and girls.\n- WiFi, study halls, mess with veg/non-veg options.\n- 24/7 security.\n- Recreation and sports facilities.`
+      q: /join/i,
+      a: () => 'If you want to join our fan club or even audition for the band, head over to our "Join" page: /Dreamsinblue/join.html'
     },
     { q: /time/i, a: () => new Date().toLocaleTimeString() },
     { q: /date/i, a: () => new Date().toLocaleDateString() },
-    { q: /joke/i, a: () => `Why do programmers prefer dark mode?\nBecause light attracts bugs! 😆` },
+    { q: /joke/i, a: () => `Why did the guitarist get arrested?\nFor fingering A minor! 🎸` },
     { q: /calc (.+)/i, a: (text, match) => safeCalc(match[1]) },
     {
       q: /clear history/i,
@@ -363,8 +351,7 @@ a: () =>
     },
     {
       q: /.*/,
-      a: (text) =>
-        `I didn’t learn that yet.\nYou said: “${text}”\nEdit the rules in code to teach me! or use /help.\n`
+      a: (text) => `Sorry, I don't have a response for that. You can try asking about our albums, events, or band members. Type "/help" for more commands.`
     }
   ];
 
@@ -460,7 +447,7 @@ a: () =>
   });
 
   if (load().length === 0) {
-    push("ai", 'Hi! I am Technova AI, your MRU chatbot. Type "/help" for features or ask campus info.');
+    push("ai", 'Hi! I am the official Rock Nation chatbot. Ask me about the band, our music, or upcoming events. Type "/help" for a list of commands.');
   }
   render();
 
@@ -475,6 +462,7 @@ a: () =>
         'albums': '/Dreamsinblue/albums.html',
         'events': '/Dreamsinblue/events.html',
         'faqs': '/Dreamsinblue/faqs.html',
+        'join': '/Dreamsinblue/join.html',
         'book now': '/Dreamsinblue/book.html',
         'chatbox': '/Dreamsinblue/chat.html'
       };
@@ -509,12 +497,3 @@ a: () =>
   </script>
 </body>
 </html>
-    <style>
-    @keyframes pulse {
-        from {
-            transform: scale(1);
-        }
-        to {
-            transform: scale(1.1);
-        }
-    }

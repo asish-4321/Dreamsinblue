@@ -40,28 +40,24 @@ body{
   background: rgba(255, 214, 100, 0.13);
   transition: all 0.22s;
 }
-body{
-    table{
-        border: solid;
-        width: 80%;
-        margin: 20px auto;
-    }
-    th,td{
-       border: solid;
-           padding: 20px;
-            border-color: white;
-            text-decoration: none;
-        }
-        th{
-            background-color: bisque;
-        }
-      tr:nth-child(even) {
-            background-color: #f4f4f4;
-        }
-        td:hover{
-            text-decoration: underline;
-        }
-    
+table {
+    border: 1px solid white;
+    width: 80%;
+    margin: 20px auto;
+}
+th, td {
+    border: 1px solid white;
+    padding: 20px;
+    text-decoration: none;
+}
+th {
+    background-color: bisque;
+}
+tr:nth-child(even) {
+    background-color: #f4f4f4;
+}
+td:hover {
+    text-decoration: underline;
 }
 
      footer {

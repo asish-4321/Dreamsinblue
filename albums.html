@@ -4,16 +4,26 @@
     <title>Document</title>
     <link rel="stylesheet" href="albums.css">
     <style>
-      #mic-btn {
+    #mic-btn {
         background: none;
         border: none;
         font-size: 24px;
         cursor: pointer;
         padding: 0 10px;
-        color: #fff;
-        transition: transform 0.2s;
+        color: #ffd700; /* Gold color */
+        text-shadow: 1px 1px 2px #000; /* Add a text shadow for better visibility */
+        transition: transform 0.2s, color 0.2s;
+        animation: pulse 1.5s infinite alternate; /* Add a subtle pulse animation */
+    }
+
+    #mic-btn:hover {
+        transform: scale(1.2);
+        color: #fff; /* Change color on hover */
       }
-      #mic-btn:hover { transform: scale(1.2); }
+    @keyframes pulse {
+        from { transform: scale(1); }
+        to { transform: scale(1.1); }
+    }
     </style>
 </head>
 <body>
@@ -28,7 +38,7 @@
     <li><a href="/Dreamsinblue/book.html">Book Now</a></li>
   </ul>
 </nav>
- <button id="mic-btn" title="Voice Commands">🎤</button>
+ <button id="mic-btn" title="Voice Commands">🎸</button>
     </section>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/h9QPhI7UDjo?si=mpL3d6rP1BnfNO0r" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <h1>our Albums</h1>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us - Rock Nation</title>
+    <link rel="stylesheet" href="expo.css">
+    <style>
+        body {
+            text-align: center;
+            color: #fff;
+        }
+        .join-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+        }
+        .join-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .join-container p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .join-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        .join-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            font-family: sans-serif;
+            resize: vertical;
+            background-color: #fff;
+            color: #000;
+        }
+        .join-form label {
+            display: block;
+            text-align: left;
+            margin: -10px 0 5px 0;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        .join-form button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffd700;
+            color: #000;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .join-form button:hover {
+            background-color: #ffc400;
+        }
+        #mic-btn {
+            background: none; border: none; font-size: 24px; cursor: pointer; padding: 0 10px;
+            color: #ffd700; text-shadow: 1px 1px 2px #000;
+            transition: transform 0.2s, color 0.2s;
+            animation: pulse 1.5s infinite alternate;
+        }
+        #mic-btn:hover { transform: scale(1.2); color: #fff; }
+        @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.1); } }
+    </style>
+</head>
+<body>
+    <section class="header">
+      <h1 id="h1">Rock Nation</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/Dreamsinblue/index.html">Home</a></li>
+                <li><a href="/Dreamsinblue/albums.html">Albums</a></li>
+                <li><a href="/Dreamsinblue/events.html">Events</a></li>
+                <li><a href="/Dreamsinblue/faqs.html">FAQs</a></li>
+                <li><a href="/Dreamsinblue/book.html">Book Now</a></li>
+                <li><a href="/Dreamsinblue/chat.html">Chatbox</a></li>
+            </ul>
+        </nav>
+        <button id="mic-btn" title="Voice Commands">🎸</button>
+    </section>
+
+    <div class="join-container">
+        <h1>Join the Nation!</h1>
+        <p>Sign up to get the latest news, tour dates, and exclusive content straight to your inbox.</p>
+        <form class="join-form" action="https://formspree.io/f/your_form_id" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email Address" required>
+            <input type="text" name="location" placeholder="Your City/Country (Optional)">
+            <input type="text" name="favorite_song" placeholder="Your Favorite Song (Optional)">
+            <label for="birthday">Birthday (Optional)</label>
+            <input type="date" id="birthday" name="birthday">
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+
+    <div class="join-container">
+        <h1>Want to Join the Band?</h1>
+        <p>Think you have what it takes to rock with us? Fill out the form below with your details and a link to your work. We're always looking for new talent!</p>
+        <form class="join-form" action="https://formspree.io/f/your_audition_form_id" method="POST">
+            <input type="text" name="name" placeholder="Your Full Name" required>
+            <input type="email" name="email" placeholder="Your Email Address" required>
+            <input type="tel" name="phone" placeholder="Your Phone Number" required>
+            <input type="text" name="instrument" placeholder="Instrument(s) You Play / Vocal Role" required>
+            <input type="url" name="demo_link" placeholder="Link to Demo (YouTube, SoundCloud, etc.)" required>
+            <textarea name="message" placeholder="Tell us a bit about your musical experience..." rows="4"></textarea>
+            <button type="submit">Submit Audition</button>
+        </form>
+    </div>
+
+    <footer>
+       <nav class="lodos">
+           <a href="https://share.google/n7slkBgBkH8BDnFSy"><img src="assets/instgram logo 2.png" alt="img" height="20px" width="20px"></a>
+           <a href="https://share.google/3Bi2MlYUhAqQ2VBtm"><img src="assets/yt logo .png" alt="img" height="20px" width="20px"></a>
+           <a href="https://share.google/OBps0JlrQHSxq4wz0"><img src="assets/Screenshot 2025-09-05 104337.png" alt="img" height="15px" width="15px"></a>
+           <a href="https://share.google/ambUxQYodVppYMhAw"><img src="assets/Screenshot 2025-09-05 104654.png" alt="img" height="15px" width="20px"></a>
+       </nav>
+        --------------------------------&copy;<a href="#">copyright disclaimer</a>-----------------------------------
+    </footer>
+
+    <script>
+        const micBtn = document.getElementById('mic-btn');
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (SpeechRecognition) {
+            const recognition = new SpeechRecognition();
+            const commands = { 'home': '/Dreamsinblue/index.html', 'albums': '/Dreamsinblue/albums.html', 'events': '/Dreamsinblue/events.html', 'faqs': '/Dreamsinblue/faqs.html', 'book now': '/Dreamsinblue/book.html', 'chatbox': '/Dreamsinblue/chat.html' };
+            micBtn.addEventListener('click', () => recognition.start());
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript.trim().toLowerCase();
+                if (commands[transcript]) { window.location.href = commands[transcript]; } 
+                else { alert(`Command not recognized: "${transcript}"`); }
+            };
+            recognition.onerror = (event) => alert('Error occurred in recognition: ' + event.error);
+        } else {
+            micBtn.style.display = 'none';
+        }
+    </script>
+    <script src="https://app.livechatai.com/embed.js" data-id="cmfz1zexb0001la04iulo7jea" async defer></script>
+</body>
+</html>

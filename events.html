@@ -20,42 +20,33 @@
         transform: scale(1.2);
         color: #fff; /* Change color on hover */
     }
-        transition: transform 0.2s;
-      }
-      #mic-btn:hover { transform: scale(1.2); }
+    @keyframes pulse {
+        from { transform: scale(1); }
+        to { transform: scale(1.1); }
+    }
     </style>
 </head>
 <body>
     <section class="header">
-        <h1 id="h">Dreams in Blue</h1>
-        <form class="search">
-            <input type="text" placeholder="search for Album" >
-        </form>
+        <h1 id="h1">Rock Nation</h1>
        <nav>
   <ul class="nav-links">
     <li><a href="/Dreamsinblue/index.html">Home</a></li>
     <li><a href="/Dreamsinblue/albums.html">Albums</a></li>
     <li><a href="/Dreamsinblue/events.html">Events</a></li>
     <li><a href="/Dreamsinblue/faqs.html">FAQs</a></li>
+    <li><a href="/Dreamsinblue/join.html">Join</a></li>
     <li><a href="/Dreamsinblue/book.html">Book Now</a></li>
+    <li><a href="/Dreamsinblue/chat.html">Chatbox</a></li>
   </ul>
 </nav>
- <button id="mic-btn" title="Voice Commands">🎤</button>
+ <button id="mic-btn" title="Voice Commands">🎸</button>
     </section>
-</head>
-<body>
 
     <h1>Upcoming Events - [Dreams in Blue]</h1>
 
     <table>
         <thead>
-            <tr>
-                <th>Date</th>
-                <th>City</th>
-                <th>Venue</th>
-                <th>Time</th>
-                <th>Tickets</th>
-            </tr>
         </thead>
         <tbody>
             <tr>
@@ -245,6 +236,7 @@
         'albums': '/Dreamsinblue/albums.html',
         'events': '/Dreamsinblue/events.html',
         'faqs': '/Dreamsinblue/faqs.html',
+        'join': '/Dreamsinblue/join.html',
         'book now': '/Dreamsinblue/book.html',
         'chatbox': '/Dreamsinblue/chat.html'
       };
@@ -279,12 +271,3 @@
     </script>
 </body>
 </html>
-    <style>
-    @keyframes pulse {
-        from {
-            transform: scale(1);
-        }
-        to {
-            transform: scale(1.1);
-        }
-    }
