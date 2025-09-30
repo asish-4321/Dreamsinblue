@@ -10,15 +10,43 @@
         font-size: 24px;
         cursor: pointer;
         padding: 0 10px;
-        color: #ffd700; /* Gold color */
-        text-shadow: 1px 1px 2px #000; /* Add a text shadow for better visibility */
+        color: #ffd700; 
+        text-shadow: 1px 1px 2px #000; 
         transition: transform 0.2s, color 0.2s;
-        animation: pulse 1.5s infinite alternate; /* Add a subtle pulse animation */
+        animation: pulse 1.5s infinite alternate; 
     }
 
     #mic-btn:hover {
         transform: scale(1.2);
-        color: #fff; /* Change color on hover */
+        color: #fff; 
+      }
+      .lang-switcher { margin-left: 15px; }
+      #lang-select {
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #ffd700;
+        border-radius: 5px;
+        padding: 5px;
+      }
+      #theme-toggle {
+        background: none; border: none; font-size: 22px; cursor: pointer;
+        color: #ffd700; padding: 0 10px;
+      }
+      .sidebar {
+        height: 100%; width: 0; position: fixed; z-index: 100; top: 0; left: 0;
+        background-color: #111; overflow-x: hidden; transition: 0.5s; padding-top: 60px;
+      }
+      .sidebar a {
+        padding: 8px 8px 8px 32px; text-decoration: none; font-size: 22px;
+        color: #818181; display: block; transition: 0.3s;
+      }
+      .sidebar a:hover { color: #f1f1f1; }
+      .sidebar .close-btn {
+        position: absolute; top: 0; right: 25px; font-size: 36px; margin-left: 50px;
+      }
+      .open-btn {
+        font-size: 25px; cursor: pointer; background: none; border: none; color: #ffd700;
+        padding: 10px 15px;
       }
     @keyframes pulse {
         from { transform: scale(1); }
@@ -26,22 +54,47 @@
     }
     </style>
 </head>
-<body>
+<body data-theme="dark">
+     <div id="sidebar" class="sidebar">
+      <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+      <a href="/Dreamsinblue/index.html" data-key="nav_home">Home</a>
+      <a href="/Dreamsinblue/albums.html" data-key="nav_albums">Albums</a>
+      <a href="/Dreamsinblue/events.html" data-key="nav_events">Events</a>
+      <a href="/Dreamsinblue/faqs.html" data-key="nav_faqs">FAQs</a>
+      <a href="/Dreamsinblue/join.html" data-key="nav_join">Join</a>
+      <a href="/Dreamsinblue/book.html" data-key="nav_book">Book Now</a>
+      <a href="/Dreamsinblue/chat.html" data-key="nav_chatbox">Chatbox</a>
+      <a href="#" id="theme-toggle">🌙 Dark Mode</a>
+    </div>
+
      <section class="header">
+      <button class="open-btn" onclick="openNav()">☰</button>
       <h1 id="h1">Rock Nation</h1>
             <nav>
-  <ul class="nav-links">
-    <li><a href="/Dreamsinblue/index.html">Home</a></li>
-    <li><a href="/Dreamsinblue/albums.html">Albums</a></li>
-    <li><a href="/Dreamsinblue/events.html">Events</a></li>
-    <li><a href="/Dreamsinblue/faqs.html">FAQs</a></li>
-    <li><a href="/Dreamsinblue/book.html">Book Now</a></li>
-  </ul>
-</nav>
- <button id="mic-btn" title="Voice Commands">🎸</button>
+              <ul class="nav-links">
+                <li><a href="/Dreamsinblue/index.html" data-key="nav_home">Home</a></li>
+                <li><a href="/Dreamsinblue/albums.html" data-key="nav_albums">Albums</a></li>
+                <li><a href="/Dreamsinblue/events.html" data-key="nav_events">Events</a></li>
+                <li><a href="/Dreamsinblue/faqs.html" data-key="nav_faqs">FAQs</a></li>
+                <li><a href="/Dreamsinblue/join.html" data-key="nav_join">Join</a></li>
+                <li><a href="/Dreamsinblue/book.html" data-key="nav_book">Book Now</a></li>
+                <li><a href="/Dreamsinblue/chat.html" data-key="nav_chatbox">Chatbox</a></li>
+              </ul>
+            </nav>
+            <div class="lang-switcher">
+              <select id="lang-select">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="te">తెలుగు</option>
+                <option value="hi">हिन्दी</option>
+                <option value="ml">മലയാളം</option>
+                <option value="ta">தமிழ்</option>
+              </select>
+            </div>
+            <button id="mic-btn" title="Voice Commands">🎸</button>
     </section>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/h9QPhI7UDjo?si=mpL3d6rP1BnfNO0r" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    <h1>our Albums</h1>
+    <h1 data-key="albums_title">Our Albums</h1>
     <section class="card">
         <div class="card1">
         <img src="assets/devara.png" alt="Fear Song Cover" height="100px" width="100px" />
@@ -51,7 +104,7 @@
             <br>
             Singer: Anirudh
         </p>
-        <a href="https://youtu.be/CKpbdCciELk">Listen</a>
+        <a href="https://youtu.be/CKpbdCciELk" data-key="listen">Listen</a>
       </div>
       </div>
        <div class="card1">
@@ -62,7 +115,7 @@
             <br>
             Singer: Anirudh
         </p>
-        <a href="https://youtu.be/CKpbdCciELk">Listen</a>
+        <a href="https://youtu.be/CKpbdCciELk" data-key="listen">Listen</a>
       </div>
       </div>
        <div class="card1">
@@ -73,7 +126,7 @@
             <br>
             Singer: Anirudh
         </p>
-        <a href="https://youtu.be/CKpbdCciELk">Listen</a>
+        <a href="https://youtu.be/CKpbdCciELk" data-key="listen">Listen</a>
       </div>
       </div>
        <div class="card1">
@@ -85,7 +138,7 @@
             <br>
             Singer: Anirudh
         </p>
-        <a href="https://youtu.be/CKpbdCciELk">Listen</a>
+        <a href="https://youtu.be/CKpbdCciELk" data-key="listen">Listen</a>
       </div>
       </div>
        <div class="card1">
@@ -96,7 +149,7 @@
             <br>
             Singer: Anirudh
         </p>
-        <a href="https://youtu.be/CKpbdCciELk">Listen</a>
+        <a href="https://youtu.be/CKpbdCciELk" data-key="listen">Listen</a>
       </div>
       </div>
           <div class="card1">
@@ -107,7 +160,7 @@
             <br>
             Singer: Anirudh
         </p>
-        <a href="https://youtu.be/CKpbdCciELk">Listen</a>
+        <a href="https://youtu.be/CKpbdCciELk" data-key="listen">Listen</a>
       </div>
       </div>
           <div class="card1">
@@ -118,7 +171,7 @@
             <br>
             Singer: Anirudh
         </p>
-        <a href="https://youtu.be/CKpbdCciELk">Listen</a>
+        <a href="https://youtu.be/CKpbdCciELk" data-key="listen">Listen</a>
       </div>
       </div>
       <div class="card1">
@@ -129,7 +182,7 @@
             <br>
             Singer: Anirudh
         </p>
-        <a href="https://youtu.be/CKpbdCciELk">Listen</a>
+        <a href="https://youtu.be/CKpbdCciELk" data-key="listen">Listen</a>
       </div>
       </div>
           <div class="card1">
@@ -140,7 +193,7 @@
             <br>
             Singer: Anirudh
         </p>
-        <a href="https://youtu.be/CKpbdCciELk">Listen</a>
+        <a href="https://youtu.be/CKpbdCciELk" data-key="listen">Listen</a>
       </div>
       </div>
       <div class="card1">
@@ -151,7 +204,7 @@
             <br>
             Singer: Anirudh
         </p>
-        <a href="https://youtu.be/CKpbdCciELk">Listen</a>
+        <a href="https://youtu.be/CKpbdCciELk" data-key="listen">Listen</a>
       </div>
       </div>
           <div class="card1">
@@ -162,7 +215,7 @@
             <br>
             Singer: Anirudh
         </p>
-        <a href="https://youtu.be/CKpbdCciELk">Listen</a>
+        <a href="https://youtu.be/CKpbdCciELk" data-key="listen">Listen</a>
       </div>
       </div>
       <div class="card1">
@@ -173,7 +226,7 @@
             <br>
             Singer: Anirudh
         </p>
-        <a href="https://youtu.be/CKpbdCciELk">Listen</a>
+        <a href="https://youtu.be/CKpbdCciELk" data-key="listen">Listen</a>
       </div>
       </div>
           <div class="card1">
@@ -184,7 +237,7 @@
             <br>
             Singer: Anirudh
         </p>
-        <a href="https://youtu.be/CKpbdCciELk">Listen</a>
+        <a href="https://youtu.be/CKpbdCciELk" data-key="listen">Listen</a>
       </div>
       </div>
       <div class="card1">
@@ -195,7 +248,7 @@
             <br>
             Singer: Anirudh
         </p>
-        <a href="https://youtu.be/CKpbdCciELk">Listen</a>
+        <a href="https://youtu.be/CKpbdCciELk" data-key="listen">Listen</a>
       </div>
       </div>
           <div class="card1">
@@ -206,7 +259,7 @@
             <br>
             Singer: Anirudh
         </p>
-        <a href="https://youtu.be/CKpbdCciELk">Listen</a>
+        <a href="https://youtu.be/CKpbdCciELk" data-key="listen">Listen</a>
       </div>
       </div>
     </section>
@@ -218,7 +271,7 @@
    <a href="https://share.google/ambUxQYodVppYMhAw"><img src="assets/Screenshot 2025-09-05 104654.png" alt="img" height="15px" width="20px"></a>
 
    </nav>
-        --------------------------------&copy;<a href="#">copyright disclaimer</a>-----------------------------------
+        --------------------------------&copy;<a href="#" data-key="copyright">copyright disclaimer</a>-----------------------------------
     </footer>
     <script>
     const micBtn = document.getElementById('mic-btn');
@@ -263,6 +316,85 @@
       src="https://app.livechatai.com/embed.js"
       data-id="cmfz1zexb0001la04iulo7jea"
       async defer>
+    </script>
+    <script>
+      const translations = {
+        en: {
+          nav_home: "Home", nav_albums: "Albums", nav_events: "Events", nav_faqs: "FAQs", nav_join: "Join", nav_book: "Book Now", nav_chatbox: "Chatbox",
+          albums_title: "Our Albums", listen: "Listen", copyright: "copyright disclaimer"
+        },
+        es: {
+          nav_home: "Inicio", nav_albums: "Álbumes", nav_events: "Eventos", nav_faqs: "Preguntas", nav_join: "Unirse", nav_book: "Reservar", nav_chatbox: "Chat",
+          albums_title: "Nuestros Álbumes", listen: "Escuchar", copyright: "aviso de copyright"
+        },
+        te: {
+          nav_home: "హోమ్", nav_albums: "ఆల్బమ్‌లు", nav_events: "ఈవెంట్‌లు", nav_faqs: "ప్రశ్నలు", nav_join: "చేరండి", nav_book: "ఇప్పుడే బుక్ చేయండి", nav_chatbox: "చాట్‌బాక్స్",
+          albums_title: "మా ఆల్బమ్‌లు", listen: "వినండి", copyright: "కాపీరైట్ నిరాకరణ"
+        },
+        hi: {
+          nav_home: "होम", nav_albums: "एलबम", nav_events: "इवेंट्स", nav_faqs: "अक्सर पूछे जाने वाले प्रश्न", nav_join: "शामिल हों", nav_book: "अभी बुक करें", nav_chatbox: "चैटबॉक्स",
+          albums_title: "हमारे एलबम", listen: "सुनो", copyright: "कॉपीराइट अस्वीकरण"
+        },
+        ml: {
+          nav_home: "ഹോം", nav_albums: "ആൽബങ്ങൾ", nav_events: "ഇവന്റുകൾ", nav_faqs: "പതിവുചോദ്യങ്ങൾ", nav_join: "ചേരുക", nav_book: "ഇപ്പോൾ ബുക്ക് ചെയ്യുക", nav_chatbox: "ചാറ്റ്ബോക്സ്",
+          albums_title: "ഞങ്ങളുടെ ആൽബങ്ങൾ", listen: "കേൾക്കൂ", copyright: "പകർപ്പവകാശ നിരാകരണം"
+        },
+        ta: {
+          nav_home: "முகப்பு", nav_albums: "ஆல்பங்கள்", nav_events: "நிகழ்வுகள்", nav_faqs: "அடிக்கடி கேட்கப்படும் கேள்விகள்", nav_join: "சேரவும்", nav_book: "இப்போது பதிவுசெய்க", nav_chatbox: "அரட்டை பெட்டி",
+          albums_title: "எங்கள் ஆல்பங்கள்", listen: "கேளுங்கள்", copyright: "பதிப்புரிமை மறுப்பு"
+        }
+      };
+
+      const langSelect = document.getElementById('lang-select');
+
+      const setLanguage = (lang) => {
+        document.querySelectorAll('[data-key]').forEach(elem => {
+          const key = elem.getAttribute('data-key');
+          if (translations[lang] && translations[lang][key]) {
+            elem.innerHTML = translations[lang][key];
+          }
+        });
+        localStorage.setItem('language', lang);
+      };
+
+      langSelect.addEventListener('change', (event) => {
+        setLanguage(event.target.value);
+      });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('language') || 'en';
+        langSelect.value = savedLang;
+        setLanguage(savedLang);
+      });
+    </script>
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+
+      const applyTheme = (theme) => {
+        body.dataset.theme = theme;
+        themeToggle.textContent = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+        localStorage.setItem('theme', theme);
+      };
+
+      themeToggle.addEventListener('click', () => {
+        const newTheme = body.dataset.theme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+      });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+        openNav();
+      });
+    </script>
+    <script>
+      function openNav() {
+        document.getElementById("sidebar").style.width = "250px";
+      }
+      function closeNav() {
+        document.getElementById("sidebar").style.width = "0";
+      }
     </script>
 </body>
 </html>

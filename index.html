@@ -22,30 +22,83 @@
     }
         transition: transform 0.2s;
       }
+      .lang-switcher { margin-left: 15px; }
+      #lang-select {
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #ffd700;
+        border-radius: 5px;
+        padding: 5px;
+      }
+      #theme-toggle {
+        background: none; border: none; font-size: 22px; cursor: pointer;
+        color: #ffd700; padding: 0 10px;
+      }
+      .sidebar {
+        height: 100%; width: 0; position: fixed; z-index: 100; top: 0; left: 0;
+        background-color: var(--sidebar-bg, #111); overflow-x: hidden; transition: 0.5s; padding-top: 60px;
+        box-shadow: 5px 0px 15px rgba(0,0,0,0.2);
+      }
+      .sidebar a {
+        padding: 8px 8px 8px 32px; text-decoration: none; font-size: 22px;
+        color: var(--sidebar-link-color, #818181); display: block; transition: 0.3s;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .sidebar a:hover { color: var(--sidebar-link-hover, #f1f1f1); }
+      .sidebar .close-btn {
+        position: absolute; top: 0; right: 25px; font-size: 36px; margin-left: 50px;
+      }
+      .open-btn {
+        font-size: 25px; cursor: pointer; background: none; border: none; color: #ffd700;
+        padding: 10px 15px;
+      }
       #mic-btn:hover { transform: scale(1.2); }
     </style>
 </head>
-<body>
+<body data-theme="dark">
+    <div id="sidebar" class="sidebar">
+      <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
+      <a href="/Dreamsinblue/index.html" data-key="nav_home">Home</a>
+      <a href="/Dreamsinblue/albums.html" data-key="nav_albums">Albums</a>
+      <a href="/Dreamsinblue/events.html" data-key="nav_events">Events</a>
+      <a href="/Dreamsinblue/faqs.html" data-key="nav_faqs">FAQs</a>
+      <a href="/Dreamsinblue/join.html" data-key="nav_join">Join</a>
+      <a href="/Dreamsinblue/book.html" data-key="nav_book">Book Now</a>
+      <a href="/Dreamsinblue/chat.html" data-key="nav_chatbox">Chatbox</a>
+      <a href="#" id="theme-toggle">🌙 Dark Mode</a>
+    </div>
+
     <section class="header">
+      <button class="open-btn" onclick="openNav()">☰</button>
       <h1 id="h1">Rock Nation</h1>
         <nav>
-  <ul class="nav-links">
-    <li><a href="/Dreamsinblue/index.html">Home</a></li>
-    <li><a href="/Dreamsinblue/albums.html">Albums</a></li>
-    <li><a href="/Dreamsinblue/events.html">Events</a></li>
-    <li><a href="/Dreamsinblue/faqs.html">FAQs</a></li>
-    <li><a href="/Dreamsinblue/join.html">Join</a></li>
-    <li><a href="/Dreamsinblue/book.html">Book Now</a></li>
-    <li><a href="/Dreamsinblue/chat.html">Chatbox</a></li>
-  </ul>
-</nav>
- <button id="mic-btn" title="Voice Commands">🎸</button>
+          <ul class="nav-links">
+            <li><a href="/Dreamsinblue/index.html" data-key="nav_home">Home</a></li>
+            <li><a href="/Dreamsinblue/albums.html" data-key="nav_albums">Albums</a></li>
+            <li><a href="/Dreamsinblue/events.html" data-key="nav_events">Events</a></li>
+            <li><a href="/Dreamsinblue/faqs.html" data-key="nav_faqs">FAQs</a></li>
+            <li><a href="/Dreamsinblue/join.html" data-key="nav_join">Join</a></li>
+            <li><a href="/Dreamsinblue/book.html" data-key="nav_book">Book Now</a></li>
+            <li><a href="/Dreamsinblue/chat.html" data-key="nav_chatbox">Chatbox</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switcher">
+          <select id="lang-select">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="te">తెలుగు</option>
+            <option value="hi">हिन्दी</option>
+            <option value="ml">മലയാളം</option>
+            <option value="ta">தமிழ்</option>
+          </select>
+        </div>
+        <button id="mic-btn" title="Voice Commands">🎸</button>
     </section>
      <section class="mid">
-      <h1>Welcome to Dreams In Blue </h1>
-      <h2>Where the Depth of music Present</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.  <br>Corrupti molestias possimus nisi error. Inventor</p>
-     <button id="btn"> <a href="join.html">Join us</a></button>
+      <h1 data-key="welcome_title">Welcome to Dreams In Blue </h1>
+      <h2 data-key="welcome_subtitle">Where the Depth of music Present</h2>
+      <p data-key="welcome_text">Lorem ipsum dolor sit amet consectetur adipisicing elit.  <br>Corrupti molestias possimus nisi error. Inventor</p>
+     <button id="btn"> <a href="/Dreamsinblue/join.html" data-key="join_us_btn">Join us</a></button>
   </section>
   <footer>
        <nav class="lodos">
@@ -55,7 +108,7 @@
    <a href="https://share.google/ambUxQYodVppYMhAw"><img src="assets/Screenshot 2025-09-05 104654.png" alt="img" height="15px" width="20px"></a>
 
    </nav>
-        --------------------------------&copy;<a href="#">copyright disclaimer</a>-----------------------------------
+        --------------------------------&copy;<a href="#" data-key="copyright">copyright disclaimer</a>-----------------------------------
     </footer>
     <script>
     const micBtn = document.getElementById('mic-btn');
@@ -101,6 +154,97 @@
       src="https://app.livechatai.com/embed.js"
       data-id="cmfz1zexb0001la04iulo7jea"
       async defer>
+    </script>
+    <script>
+      const translations = {
+        en: {
+          nav_home: "Home", nav_albums: "Albums", nav_events: "Events", nav_faqs: "FAQs", nav_join: "Join", nav_book: "Book Now", nav_chatbox: "Chatbox",
+          welcome_title: "Welcome to Dreams In Blue", welcome_subtitle: "Where the Depth of music Present",
+          welcome_text: "Lorem ipsum dolor sit amet consectetur adipisicing elit.  <br>Corrupti molestias possimus nisi error. Inventor",
+          join_us_btn: "Join us", copyright: "copyright disclaimer"
+        },
+        es: {
+          nav_home: "Inicio", nav_albums: "Álbumes", nav_events: "Eventos", nav_faqs: "Preguntas", nav_join: "Unirse", nav_book: "Reservar", nav_chatbox: "Chat",
+          welcome_title: "Bienvenidos a Dreams In Blue", welcome_subtitle: "Donde la profundidad de la música se presenta",
+          welcome_text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>Corrupti molestias possimus nisi error. Inventor",
+          join_us_btn: "Únete a nosotros", copyright: "aviso de copyright"
+        },
+        te: {
+          nav_home: "హోమ్", nav_albums: "ఆల్బమ్‌లు", nav_events: "ఈవెంట్‌లు", nav_faqs: "ప్రశ్నలు", nav_join: "చేరండి", nav_book: "ఇప్పుడే బుక్ చేయండి", nav_chatbox: "చాట్‌బాక్స్",
+          welcome_title: "డ్రీమ్స్ ఇన్ బ్లూకి స్వాగతం", welcome_subtitle: "సంగీతం యొక్క లోతు ఉన్న చోట",
+          welcome_text: "లోరెమ్ ఇప్సమ్ డోలర్ సిట్ అమెట్ కన్సెక్టెటర్ అడిపిసికింగ్ ఎలిట్. <br>కరప్టి మోలేస్టియాస్ పోసిమస్ నిసి ఎర్రర్. ఇన్వెంటర్",
+          join_us_btn: "మాతో చేరండి", copyright: "కాపీరైట్ నిరాకరణ"
+        },
+        hi: {
+          nav_home: "होम", nav_albums: "एलबम", nav_events: "इवेंट्स", nav_faqs: "अक्सर पूछे जाने वाले प्रश्न", nav_join: "शामिल हों", nav_book: "अभी बुक करें", nav_chatbox: "चैटबॉक्स",
+          welcome_title: "ड्रीम्स इन ब्लू में आपका स्वागत है", welcome_subtitle: "जहां संगीत की गहराई मौजूद है",
+          welcome_text: "लोरेम इप्सम डोलोर सिट अमेट कॉन्सेक्टेटर एडिपिसिसिंग एलीट। <br>करप्टी मोलेस्टियास पोसिमस निसि एरर। इन्वेंटर",
+          join_us_btn: "हमसे जुड़ें", copyright: "कॉपीराइट अस्वीकरण"
+        },
+        ml: {
+          nav_home: "ഹോം", nav_albums: "ആൽബങ്ങൾ", nav_events: "ഇവന്റുകൾ", nav_faqs: "പതിവുചോദ്യങ്ങൾ", nav_join: "ചേരുക", nav_book: "ഇപ്പോൾ ബുക്ക് ചെയ്യുക", nav_chatbox: "ചാറ്റ്ബോക്സ്",
+          welcome_title: "ഡ്രീംസ് ഇൻ ബ്ലൂയിലേക്ക് സ്വാഗതം", welcome_subtitle: "സംഗീതത്തിന്റെ ആഴം എവിടെയാണോ",
+          welcome_text: "ലോറം ഇപ്‌സം ഡോളർ സിറ്റ് അമേറ്റ് കോൺസെക്റ്ററ്റർ അഡിപിസിംഗ് എലൈറ്റ്. <br>കറപ്റ്റി മൊളസ്റ്റിയാസ് പോസിമസ് നിസി എറർ. ഇൻവെന്റർ",
+          join_us_btn: "ഞങ്ങളോടൊപ്പം ചേരൂ", copyright: "പകർപ്പവകാശ നിരാകരണം"
+        },
+        ta: {
+          nav_home: "முகப்பு", nav_albums: "ஆல்பங்கள்", nav_events: "நிகழ்வுகள்", nav_faqs: "அடிக்கடி கேட்கப்படும் கேள்விகள்", nav_join: "சேரவும்", nav_book: "இப்போது பதிவுசெய்க", nav_chatbox: "அரட்டை பெட்டி",
+          welcome_title: "ட்ரீம்ஸ் இன் ப்ளூக்கு வரவேற்கிறோம்", welcome_subtitle: "இசையின் ஆழம் இருக்கும் இடத்தில்",
+          welcome_text: "லோரம் இப்சம் டோலர் சிட் அமெட் கான்செக்டெட்டர் அடிபிசிங் எலைட். <br>கரப்டி மொலஸ்டியாஸ் போசிமஸ் நிசி பிழை. கண்டுபிடிப்பாளர்",
+          join_us_btn: "எங்களுடன் சேருங்கள்", copyright: "பதிப்புரிமை மறுப்பு"
+        }
+      };
+
+      const langSelect = document.getElementById('lang-select');
+
+      const setLanguage = (lang) => {
+        document.querySelectorAll('[data-key]').forEach(elem => {
+          const key = elem.getAttribute('data-key');
+          if (translations[lang] && translations[lang][key]) {
+            elem.innerHTML = translations[lang][key];
+          }
+        });
+        localStorage.setItem('language', lang);
+      };
+
+      langSelect.addEventListener('change', (event) => {
+        setLanguage(event.target.value);
+      });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('language') || 'en';
+        langSelect.value = savedLang;
+        setLanguage(savedLang);
+      });
+    </script>
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+
+      const applyTheme = (theme) => {
+        body.dataset.theme = theme;
+        themeToggle.textContent = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+        localStorage.setItem('theme', theme);
+      };
+
+      themeToggle.addEventListener('click', () => {
+        const newTheme = body.dataset.theme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+      });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        applyTheme(savedTheme);
+        openNav();
+      });
+    </script>
+    <script>
+      function openNav() {
+        document.getElementById("sidebar").style.width = "250px";
+      }
+      function closeNav() {
+        document.getElementById("sidebar").style.width = "0";
+      }
     </script>
 </body>
     <style>
