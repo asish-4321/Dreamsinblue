@@ -95,28 +95,56 @@ body{
   color: rgb(250, 250, 251);
 
 }
+.mid > * {
+  opacity: 0; /* Initially hide animated elements */
+}
+
 #btn{
   margin-right: 300px;
-  padding: 5px;
-  padding-left: 50px ;
-  padding-right:50px; 
-    
+  padding: 12px 50px;
+  border: 2px solid var(--mic-color, #ffd700);
+  background-color: transparent;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  animation: fadeInUp 0.8s ease-out 0.9s forwards;
 }
 #btn:hover {
-  background-color: #1974ca;
+  background-color: var(--mic-color, #ffd700);
+  transform: translateY(-3px);
 }
 #btn a {
-  color: #fff;
+  color: var(--mic-color, #ffd700);
   text-decoration: none;
-
+  font-weight: bold;
+  transition: color 0.3s;
+}
+#btn:hover a {
+  color: #000;
 }
 .mid h2,p{
   padding-right: 90px;
   font-size: 20px;
-
-
 }
 .mid h1{
     font-size: 50px;
     font-weight: 100px;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+.mid h2 {
+    animation: fadeInUp 0.8s ease-out 0.3s forwards;
+}
+.mid p {
+    animation: fadeInUp 0.8s ease-out 0.6s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

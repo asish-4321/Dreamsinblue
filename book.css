@@ -2,17 +2,6 @@
     box-sizing: border-box;
 }
 body{
-    background: #020024;
-background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 0%, rgba(56, 83, 255, 1) 32%, rgba(0, 212, 255, 1) 100%);
-}
-
-.header {
-     background-color: blueviolet;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 48px;
-  position: sticky;
 }
 .header h1{
    

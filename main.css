@@ -1,0 +1,176 @@
+/* Theme Variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --header-bg: rgba(240, 240, 240, 0.85);
+  --nav-link-color: #333;
+  --nav-link-hover-color: #007bff;
+  --nav-link-hover-bg: rgba(0, 123, 255, 0.1);
+  --footer-bg: #f8f9fa;
+  --footer-text-color: #333;
+  --sidebar-bg: #f8f9fa;
+  --sidebar-link-color: #333;
+  --sidebar-link-hover: #007bff;
+  --mic-color: #007bff;
+  --mic-hover-color: #0056b3;
+}
+
+[data-theme="dark"] {
+  --bg-color: transparent; /* Uses body's background image */
+  --text-color: #fdfafa;
+  --header-bg: rgba(10, 25, 47, 0.85); /* Dark Blue */
+  --nav-link-color: #fdfafa;
+  --nav-link-hover-color: #ff9900; /* Orange */
+  --nav-link-hover-bg: rgba(255, 153, 0, 0.15); /* Orange Transparent */
+  --footer-bg: #222854;
+  --footer-text-color: #f6f7fa;
+  --sidebar-bg: #0a192f; /* Dark Blue */
+  --sidebar-link-color: #818181;
+  --sidebar-link-hover: #ff9900; /* Orange */
+  --mic-color: #ff9900; /* Orange */
+  --mic-hover-color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-color, transparent);
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(assets/musicband1.jpg);
+    background-size: cover;
+    background-attachment: fixed; /* Prevents background from scrolling */
+    background-position: center;
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    font-family: sans-serif;
+    animation: slowZoom 40s infinite alternate ease-in-out;
+}
+
+@keyframes slowZoom {
+    from {
+        background-size: 100% auto;
+    }
+    to {
+        background-size: 120% auto;
+    }
+}
+/* --- Header & Navigation --- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 48px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--header-bg);
+  backdrop-filter: blur(5px);
+  transition: padding 0.3s ease-in-out;
+}
+
+.header.header-scrolled {
+    padding: 10px 48px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.header h1 {
+  color: #f4f5ef;
+  font-size: 25px;
+  margin: 0;
+  transition: font-size 0.3s ease-in-out;
+}
+
+.header.header-scrolled h1 {
+    font-size: 22px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 34px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--nav-link-color);
+  text-decoration: none;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--nav-link-hover-color);
+  background: var(--nav-link-hover-bg);
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    height: 100%; width: 0; position: fixed; z-index: 101; top: 0; left: 0;
+    background-color: var(--sidebar-bg, #111); overflow-x: hidden; transition: width 0.4s ease-in-out; padding-top: 60px;
+    box-shadow: 5px 0px 15px rgba(0,0,0,0.2);
+}
+.sidebar a {
+    padding: 12px 15px 12px 32px; text-decoration: none; font-size: 20px;
+    color: var(--sidebar-link-color, #818181); display: block; transition: 0.3s;
+    white-space: nowrap; /* Prevent text wrapping during transition */
+}
+.sidebar a:hover {
+    color: var(--sidebar-link-hover, #f1f1f1);
+    background-color: var(--nav-link-hover-bg);
+}
+.sidebar .close-btn {
+    position: absolute; top: 10px; right: 25px; font-size: 36px; margin-left: 50px;
+    line-height: 1;
+}
+.sidebar .sidebar-toggle {
+    margin-top: 20px;
+    border-top: 1px solid rgba(129, 129, 129, 0.3);
+    padding-top: 15px;
+}
+
+/* Page Overlay */
+#overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+.open-btn {
+    font-size: 25px; cursor: pointer; background: none; border: none; color: var(--mic-color);
+    padding: 10px 15px;
+}
+
+/* --- Interactive Elements --- */
+#mic-btn {
+    background: none; border: none; font-size: 24px; cursor: pointer; padding: 0 10px;
+    color: var(--mic-color); text-shadow: 1px 1px 2px #000;
+    transition: transform 0.2s, color 0.2s;
+    animation: pulse 1.5s infinite alternate;
+}
+#mic-btn:hover { transform: scale(1.2); color: var(--mic-hover-color); }
+@keyframes pulse { from { transform: scale(1); } to { transform: scale(1.1); } }
+
+#theme-toggle { background: none; border: none; font-size: 22px; cursor: pointer; color: var(--mic-color); padding: 0 10px; }
+.lang-switcher { margin-left: 15px; }
+#lang-select { background-color: #0a192f; color: #fff; border: 1px solid var(--mic-color); border-radius: 5px; padding: 5px; }
+
+/* --- Footer --- */
+footer {
+  padding: 26px 0 20px 0;
+  background: var(--footer-bg);
+  color: var(--footer-text-color);
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin-top: auto; /* Pushes footer to the bottom */
+}
+.lodos { display: flex; justify-content: center; gap: 25px; margin-bottom: 1rem; }
+footer .divider { color: var(--footer-text-color); opacity: 0.5; }

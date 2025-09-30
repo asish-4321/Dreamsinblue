@@ -2,16 +2,6 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #0b2f46;
-}
-
-.header {
-     background-color: cadetblue;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 48px;
-  position: sticky;
 }
 .header h1{
    

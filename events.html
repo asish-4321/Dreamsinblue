@@ -2,60 +2,23 @@
 <html lang="en">
 <head>
     <title>Document</title>
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="main.css">
+    <!-- Page-specific CSS -->
     <link rel="stylesheet" href="events.css">
-    <style>
-    #mic-btn {
-        background: none;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        padding: 0 10px;
-        color: #ffd700; /* Gold color */
-        text-shadow: 1px 1px 2px #000; /* Add a text shadow for better visibility */
-        transition: transform 0.2s, color 0.2s;
-        animation: pulse 1.5s infinite alternate; /* Add a subtle pulse animation */
-    }
-
-    #mic-btn:hover {
-        transform: scale(1.2);
-        color: #fff; /* Change color on hover */
-    }
-    #theme-toggle {
-        background: none; border: none; font-size: 22px; cursor: pointer;
-        color: #ffd700; padding: 0 10px;
-      }
-    .sidebar {
-        height: 100%; width: 0; position: fixed; z-index: 100; top: 0; left: 0;
-        background-color: #111; overflow-x: hidden; transition: 0.5s; padding-top: 60px;
-      }
-      .sidebar a {
-        padding: 8px 8px 8px 32px; text-decoration: none; font-size: 22px;
-        color: #818181; display: block; transition: 0.3s;
-      }
-      .sidebar a:hover { color: #f1f1f1; }
-      .sidebar .close-btn {
-        position: absolute; top: 0; right: 25px; font-size: 36px; margin-left: 50px;
-      }
-      .open-btn {
-        font-size: 25px; cursor: pointer; background: none; border: none; color: #ffd700;
-        padding: 10px 15px;
-      }
-    @keyframes pulse {
-        from { transform: scale(1); }
-        to { transform: scale(1.1); }
-    }
-    </style>
 </head>
 <body data-theme="dark">
+    <div id="overlay" onclick="closeNav()"></div>
     <div id="sidebar" class="sidebar">
       <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
-      <a href="/Dreamsinblue/index.html" data-key="nav_home">Home</a>
-      <a href="/Dreamsinblue/albums.html" data-key="nav_albums">Albums</a>
-      <a href="/Dreamsinblue/events.html" data-key="nav_events">Events</a>
-      <a href="/Dreamsinblue/faqs.html" data-key="nav_faqs">FAQs</a>
-      <a href="/Dreamsinblue/join.html" data-key="nav_join">Join</a>
-      <a href="/Dreamsinblue/book.html" data-key="nav_book">Book Now</a>
-      <a href="#" id="theme-toggle">🌙 Dark Mode</a>
+      <a href="/Dreamsinblue/index.html" data-key="nav_home">🏠 Home</a>
+      <a href="/Dreamsinblue/albums.html" data-key="nav_albums">💿 Albums</a>
+      <a href="/Dreamsinblue/events.html" data-key="nav_events">🎟️ Events</a>
+      <a href="/Dreamsinblue/faqs.html" data-key="nav_faqs">❓ FAQs</a>
+      <a href="/Dreamsinblue/join.html" data-key="nav_join">🤝 Join</a>
+      <a href="/Dreamsinblue/book.html" data-key="nav_book">📅 Book Now</a>
+      <a href="/Dreamsinblue/chat.html" data-key="nav_chatbox">💬 Chatbox</a>
+      <a href="#" id="theme-toggle" class="sidebar-toggle">🌙 Dark Mode</a>
     </div>
     <section class="header">
         <button class="open-btn" onclick="openNav()">☰</button>
@@ -255,79 +218,11 @@
    </nav>
         --------------------------------&copy;<a href="#">copyright disclaimer</a>-----------------------------------
     </footer>
-    <script>
-    const micBtn = document.getElementById('mic-btn');
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-    if (SpeechRecognition) {
-      const recognition = new SpeechRecognition();
-
-      const commands = {
-        'home': '/Dreamsinblue/index.html',
-        'albums': '/Dreamsinblue/albums.html',
-        'events': '/Dreamsinblue/events.html',
-        'faqs': '/Dreamsinblue/faqs.html',
-        'join': '/Dreamsinblue/join.html',
-        'book now': '/Dreamsinblue/book.html',
-        'chatbox': '/Dreamsinblue/chat.html'
-      };
-
-      micBtn.addEventListener('click', () => {
-        recognition.start();
-      });
-
-      recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript.trim().toLowerCase();
-        console.log('Heard:', transcript);
-
-        if (commands[transcript]) {
-          window.location.href = commands[transcript];
-        } else {
-          alert(`Command not recognized: "${transcript}"`);
-        }
-      };
-
-       micBtn.onerror = (event) => {
-        alert('Error occurred in recognition: ' + event.error);
-      };
-    } else {
-      micBtn.style.display = 'none';
-      console.log('Speech Recognition not supported in this browser.');
-    }
-    </script>
     <script
       src="https://app.livechatai.com/embed.js"
       data-id="cmfz1zexb0001la04iulo7jea"
       async defer>
     </script>
-    <script>
-      const themeToggle = document.getElementById('theme-toggle');
-      const body = document.body;
-
-      const applyTheme = (theme) => {
-        body.dataset.theme = theme;
-        themeToggle.textContent = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
-        localStorage.setItem('theme', theme);
-      };
-
-      themeToggle.addEventListener('click', () => {
-        const newTheme = body.dataset.theme === 'dark' ? 'light' : 'dark';
-        applyTheme(newTheme);
-      });
-
-      document.addEventListener('DOMContentLoaded', () => {
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        applyTheme(savedTheme);
-        openNav();
-      });
-    </script>
-    <script>
-      function openNav() {
-        document.getElementById("sidebar").style.width = "250px";
-      }
-      function closeNav() {
-        document.getElementById("sidebar").style.width = "0";
-      }
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

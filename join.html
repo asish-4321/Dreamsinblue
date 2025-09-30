@@ -4,117 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Us - Rock Nation</title>
-    <link rel="stylesheet" href="expo.css">
-    <style>
-        body {
-            text-align: center;
-            color: #fff;
-        }
-        .join-container {
-            max-width: 500px;
-            margin: 50px auto;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 15px;
-        }
-        .join-container h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        .join-container p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
-        .join-form input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 1rem;
-        }
-        .join-form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 1rem;
-            font-family: sans-serif;
-            resize: vertical;
-            background-color: #fff;
-            color: #000;
-        }
-        .join-form label {
-            display: block;
-            text-align: left;
-            margin: -10px 0 5px 0;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-        .join-form button {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 5px;
-            background-color: #ffd700;
-            color: #000;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .join-form button:hover {
-            background-color: #ffc400;
-        }
-        #mic-btn {
-            background: none; border: none; font-size: 24px; cursor: pointer; padding: 0 10px;
-            color: #ffd700; text-shadow: 1px 1px 2px #000;
-            transition: transform 0.2s, color 0.2s;
-            animation: pulse 1.5s infinite alternate;
-        }
-        .lang-switcher { margin-left: 15px; }
-        #lang-select {
-            background-color: #333;
-            color: #fff;
-            border: 1px solid #ffd700;
-            border-radius: 5px;
-            padding: 5px;
-        }
-        #theme-toggle {
-            background: none; border: none; font-size: 22px; cursor: pointer;
-            color: #ffd700; padding: 0 10px;
-        }
-        .sidebar {
-            height: 100%; width: 0; position: fixed; z-index: 100; top: 0; left: 0;
-            background-color: #111; overflow-x: hidden; transition: 0.5s; padding-top: 60px;
-        }
-        .sidebar a {
-            padding: 8px 8px 8px 32px; text-decoration: none; font-size: 22px;
-            color: #818181; display: block; transition: 0.3s;
-        }
-        .sidebar a:hover { color: #f1f1f1; }
-        .sidebar .close-btn {
-            position: absolute; top: 0; right: 25px; font-size: 36px; margin-left: 50px;
-        }
-        .open-btn {
-            font-size: 25px; cursor: pointer; background: none; border: none; color: #ffd700;
-            padding: 10px 15px;
-        }
-        #mic-btn:hover { transform: scale(1.2); color: #fff; }
-        @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.1); } }
-    </style>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="join.css"> <!-- Assuming you will create a join.css -->
 </head>
 <body data-theme="dark">
+    <div id="overlay" onclick="closeNav()"></div>
     <div id="sidebar" class="sidebar">
       <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
-      <a href="/Dreamsinblue/index.html" data-key="nav_home">Home</a>
-      <a href="/Dreamsinblue/albums.html" data-key="nav_albums">Albums</a>
-      <a href="/Dreamsinblue/events.html" data-key="nav_events">Events</a>
-      <a href="/Dreamsinblue/faqs.html" data-key="nav_faqs">FAQs</a>
-      <a href="/Dreamsinblue/join.html" data-key="nav_join">Join</a>
-      <a href="/Dreamsinblue/book.html" data-key="nav_book">Book Now</a>
-      <a href="#" id="theme-toggle">🌙 Dark Mode</a>
+      <a href="/Dreamsinblue/index.html" data-key="nav_home">🏠 Home</a>
+      <a href="/Dreamsinblue/albums.html" data-key="nav_albums">💿 Albums</a>
+      <a href="/Dreamsinblue/events.html" data-key="nav_events">🎟️ Events</a>
+      <a href="/Dreamsinblue/faqs.html" data-key="nav_faqs">❓ FAQs</a>
+      <a href="/Dreamsinblue/join.html" data-key="nav_join">🤝 Join</a>
+      <a href="/Dreamsinblue/book.html" data-key="nav_book">📅 Book Now</a>
+      <a href="/Dreamsinblue/chat.html" data-key="nav_chatbox">💬 Chatbox</a>
+      <a href="#" id="theme-toggle" class="sidebar-toggle">🌙 Dark Mode</a>
     </div>
     <section class="header">
       <button class="open-btn" onclick="openNav()">☰</button>
@@ -146,11 +50,15 @@
     <div class="join-container">
         <h1 data-key="join_title_fan">Join the Nation!</h1>
         <p data-key="join_subtitle_fan">Sign up to get the latest news, tour dates, and exclusive content straight to your inbox.</p>
-        <form class="join-form" action="https://formspree.io/f/your_form_id" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email Address" required>
-            <input type="text" name="location" placeholder="Your City/Country (Optional)">
-            <input type="text" name="favorite_song" placeholder="Your Favorite Song (Optional)">
+        <form class="join-form" action="https://formspree.io/f/your_form_id" method="POST"> <!-- TODO: Replace with your Formspree ID -->
+            <label for="fan-name">Your Name</label>
+            <input type="text" id="fan-name" name="name" placeholder="Your Name" required>
+            <label for="fan-email">Your Email Address</label>
+            <input type="email" id="fan-email" name="email" placeholder="Your Email Address" required>
+            <label for="fan-location">Your City/Country (Optional)</label>
+            <input type="text" id="fan-location" name="location" placeholder="Your City/Country">
+            <label for="fan-song">Your Favorite Song (Optional)</label>
+            <input type="text" id="fan-song" name="favorite_song" placeholder="Your Favorite Song">
             <label for="birthday" data-key="birthday_label">Birthday (Optional)</label>
             <input type="date" id="birthday" name="birthday">
             <button type="submit" data-key="subscribe_btn">Subscribe</button>
@@ -160,13 +68,19 @@
     <div class="join-container">
         <h1 data-key="join_title_band">Want to Join the Band?</h1>
         <p data-key="join_subtitle_band">Think you have what it takes to rock with us? Fill out the form below with your details and a link to your work. We're always looking for new talent!</p>
-        <form class="join-form" action="https://formspree.io/f/your_audition_form_id" method="POST">
-            <input type="text" name="name" placeholder="Your Full Name" required>
-            <input type="email" name="email" placeholder="Your Email Address" required>
-            <input type="tel" name="phone" placeholder="Your Phone Number" required>
-            <input type="text" name="instrument" placeholder="Instrument(s) You Play / Vocal Role" required>
-            <input type="url" name="demo_link" placeholder="Link to Demo (YouTube, SoundCloud, etc.)" required>
-            <textarea name="message" placeholder="Tell us a bit about your musical experience..." rows="4"></textarea>
+        <form class="join-form" action="https://formspree.io/f/your_audition_form_id" method="POST"> <!-- TODO: Replace with your Formspree ID -->
+            <label for="audition-name">Your Full Name</label>
+            <input type="text" id="audition-name" name="name" placeholder="Your Full Name" required>
+            <label for="audition-email">Your Email Address</label>
+            <input type="email" id="audition-email" name="email" placeholder="Your Email Address" required>
+            <label for="audition-phone">Your Phone Number</label>
+            <input type="tel" id="audition-phone" name="phone" placeholder="Your Phone Number" required>
+            <label for="audition-instrument">Instrument(s) You Play / Vocal Role</label>
+            <input type="text" id="audition-instrument" name="instrument" placeholder="e.g., Guitar, Vocals" required>
+            <label for="audition-link">Link to Demo</label>
+            <input type="url" id="audition-link" name="demo_link" placeholder="Link to YouTube, SoundCloud, etc." required>
+            <label for="audition-message">About Your Experience</label>
+            <textarea id="audition-message" name="message" placeholder="Tell us a bit about your musical experience..." rows="4"></textarea>
             <button type="submit" data-key="audition_btn">Submit Audition</button>
         </form>
     </div>
@@ -181,120 +95,7 @@
         --------------------------------&copy;<a href="#" data-key="copyright">copyright disclaimer</a>-----------------------------------
     </footer>
 
-    <script>
-        const micBtn = document.getElementById('mic-btn');
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        if (SpeechRecognition) {
-            const recognition = new SpeechRecognition();
-            const commands = { 'home': '/Dreamsinblue/index.html', 'albums': '/Dreamsinblue/albums.html', 'events': '/Dreamsinblue/events.html', 'faqs': '/Dreamsinblue/faqs.html', 'join': '/Dreamsinblue/join.html', 'book now': '/Dreamsinblue/book.html', 'chatbox': '/Dreamsinblue/chat.html' };
-            micBtn.addEventListener('click', () => recognition.start());
-            recognition.onresult = (event) => {
-                const transcript = event.results[0][0].transcript.trim().toLowerCase();
-                if (commands[transcript]) { window.location.href = commands[transcript]; }
-                else { alert(`Command not recognized: "${transcript}"`); }
-            };
-            recognition.onerror = (event) => alert('Error occurred in recognition: ' + event.error);
-        } else {
-            micBtn.style.display = 'none';
-        }
-    </script>
     <script src="https://app.livechatai.com/embed.js" data-id="cmfz1zexb0001la04iulo7jea" async defer></script>
-    <script>
-      const translations = {
-        en: {
-          nav_home: "Home", nav_albums: "Albums", nav_events: "Events", nav_faqs: "FAQs", nav_join: "Join", nav_book: "Book Now", nav_chatbox: "Chatbox",
-          join_title_fan: "Join the Nation!", join_subtitle_fan: "Sign up to get the latest news, tour dates, and exclusive content straight to your inbox.",
-          birthday_label: "Birthday (Optional)", subscribe_btn: "Subscribe",
-          join_title_band: "Want to Join the Band?", join_subtitle_band: "Think you have what it takes to rock with us? Fill out the form below with your details and a link to your work. We're always looking for new talent!",
-          audition_btn: "Submit Audition", copyright: "copyright disclaimer"
-        },
-        es: {
-          nav_home: "Inicio", nav_albums: "Álbumes", nav_events: "Eventos", nav_faqs: "Preguntas", nav_join: "Unirse", nav_book: "Reservar", nav_chatbox: "Chat",
-          join_title_fan: "¡Únete a la Nación!", join_subtitle_fan: "Regístrate para recibir las últimas noticias, fechas de giras y contenido exclusivo directamente en tu bandeja de entrada.",
-          birthday_label: "Cumpleaños (Opcional)", subscribe_btn: "Suscribir",
-          join_title_band: "¿Quieres Unirte a la Banda?", join_subtitle_band: "¿Crees que tienes lo necesario para rockear con nosotros? Completa el formulario a continuación con tus datos y un enlace a tu trabajo. ¡Siempre estamos buscando nuevos talentos!",
-          audition_btn: "Enviar Audición", copyright: "aviso de copyright"
-        },
-        te: {
-          nav_home: "హోమ్", nav_albums: "ఆల్బమ్‌లు", nav_events: "ఈవెంట్‌లు", nav_faqs: "ప్రశ్నలు", nav_join: "చేరండి", nav_book: "ఇప్పుడే బుక్ చేయండి", nav_chatbox: "చాట్‌బాక్స్",
-          join_title_fan: "నేషన్‌లో చేరండి!", join_subtitle_fan: "తాజా వార్తలు, పర్యటన తేదీలు మరియు ప్రత్యేకమైన కంటెంట్‌ను నేరుగా మీ ఇన్‌బాక్స్‌కు పొందడానికి సైన్ అప్ చేయండి.",
-          birthday_label: "పుట్టినరోజు (ఐచ్ఛికం)", subscribe_btn: "సభ్యత్వం పొందండి",
-          join_title_band: "బ్యాండ్‌లో చేరాలనుకుంటున్నారా?", join_subtitle_band: "మాతో రాక్ చేయడానికి మీకు ఏమి కావాలో ఆలోచిస్తున్నారా? మీ వివరాలు మరియు మీ పనికి సంబంధించిన లింక్‌తో దిగువ ఫారమ్‌ను పూరించండి. మేము ఎల్లప్పుడూ కొత్త ప్రతిభ కోసం చూస్తున్నాము!",
-          audition_btn: "ఆడిషన్‌ను సమర్పించండి", copyright: "కాపీరైట్ నిరాకరణ"
-        },
-        hi: {
-          nav_home: "होम", nav_albums: "एलबम", nav_events: "इवेंट्स", nav_faqs: "अक्सर पूछे जाने वाले प्रश्न", nav_join: "शामिल हों", nav_book: "अभी बुक करें", nav_chatbox: "चैटबॉक्स",
-          join_title_fan: "राष्ट्र में शामिल हों!", join_subtitle_fan: "नवीनतम समाचार, दौरे की तारीखें, और विशेष सामग्री सीधे अपने इनबॉक्स में पाने के लिए साइन अप करें।",
-          birthday_label: "जन्मदिन (वैकल्पिक)", subscribe_btn: "सब्सक्राइब करें",
-          join_title_band: "बैंड में शामिल होना चाहते हैं?", join_subtitle_band: "क्या आपको लगता है कि आपके पास हमारे साथ रॉक करने के लिए वह है जो चाहिए? नीचे दिए गए फॉर्म को अपने विवरण और अपने काम के लिंक के साथ भरें। हम हमेशा नई प्रतिभा की तलाश में रहते हैं!",
-          audition_btn: "ऑडिशन सबमिट करें", copyright: "कॉपीराइट अस्वीकरण"
-        },
-        ml: {
-          nav_home: "ഹോം", nav_albums: "ആൽബങ്ങൾ", nav_events: "ഇവന്റുകൾ", nav_faqs: "പതിവുചോദ്യങ്ങൾ", nav_join: "ചേരുക", nav_book: "ഇപ്പോൾ ബുക്ക് ചെയ്യുക", nav_chatbox: "ചാറ്റ്ബോക്സ്",
-          join_title_fan: "രാഷ്ട്രത്തിൽ ചേരൂ!", join_subtitle_fan: "ഏറ്റവും പുതിയ വാർത്തകൾ, ടൂർ തീയതികൾ, എക്സ്ക്ലൂസീവ് ഉള്ളടക്കം എന്നിവ നിങ്ങളുടെ ഇൻബോക്സിൽ നേരിട്ട് ലഭിക്കാൻ സൈൻ അപ്പ് ചെയ്യുക.",
-          birthday_label: "ജന്മദിനം (ഓപ്ഷണൽ)", subscribe_btn: "സബ്സ്ക്രൈബ് ചെയ്യുക",
-          join_title_band: "ബാൻഡിൽ ചേരാൻ ആഗ്രഹിക്കുന്നുണ്ടോ?", join_subtitle_band: "ഞങ്ങളോടൊപ്പം റോക്ക് ചെയ്യാൻ നിങ്ങൾക്ക് കഴിവുണ്ടെന്ന് കരുതുന്നുണ്ടോ? നിങ്ങളുടെ വിശദാംശങ്ങളും നിങ്ങളുടെ സൃഷ്ടിയുടെ ലിങ്കും സഹിതം താഴെയുള്ള ഫോം പൂരിപ്പിക്കുക. ഞങ്ങൾ എപ്പോഴും പുതിയ പ്രതിഭകളെ തേടുന്നു!",
-          audition_btn: "ഓഡിഷൻ സമർപ്പിക്കുക", copyright: "പകർപ്പവകാശ നിരാകരണം"
-        },
-        ta: {
-          nav_home: "முகப்பு", nav_albums: "ஆல்பங்கள்", nav_events: "நிகழ்வுகள்", nav_faqs: "அடிக்கடி கேட்கப்படும் கேள்விகள்", nav_join: "சேரவும்", nav_book: "இப்போது பதிவுசெய்க", nav_chatbox: "அரட்டை பெட்டி",
-          join_title_fan: "தேசத்தில் சேருங்கள்!", join_subtitle_fan: "சமீபத்திய செய்திகள், சுற்றுப்பயண தேதிகள் மற்றும் பிரத்யேக உள்ளடக்கத்தை நேரடியாக உங்கள் இன்பாக்ஸில் பெற பதிவு செய்யவும்.",
-          birthday_label: "பிறந்தநாள் (விருப்பத்தேர்வு)", subscribe_btn: " குழுசேர்",
-          join_title_band: "இசைக்குழுவில் சேர விரும்புகிறீர்களா?", join_subtitle_band: "எங்களுடன் ராக் செய்ய உங்களிடம் என்ன இருக்கிறது என்று நினைக்கிறீர்களா? கீழே உள்ள படிவத்தை உங்கள் விவரங்கள் மற்றும் உங்கள் வேலையின் இணைப்புடன் நிரப்பவும். நாங்கள் எப்போதும் புதிய திறமைகளைத் தேடுகிறோம்!",
-          audition_btn: "சோதனையைச் சமர்ப்பிக்கவும்", copyright: "பதிப்புரிமை மறுப்பு"
-        }
-      };
-
-      const langSelect = document.getElementById('lang-select');
-
-      const setLanguage = (lang) => {
-        document.querySelectorAll('[data-key]').forEach(elem => {
-          const key = elem.getAttribute('data-key');
-          if (translations[lang] && translations[lang][key]) {
-            elem.innerHTML = translations[lang][key];
-          }
-        });
-        localStorage.setItem('language', lang);
-      };
-
-      langSelect.addEventListener('change', (event) => {
-        setLanguage(event.target.value);
-      });
-
-      document.addEventListener('DOMContentLoaded', () => {
-        const savedLang = localStorage.getItem('language') || 'en';
-        langSelect.value = savedLang;
-        setLanguage(savedLang);
-      });
-    </script>
-    <script>
-      const themeToggle = document.getElementById('theme-toggle');
-      const body = document.body;
-
-      const applyTheme = (theme) => {
-        body.dataset.theme = theme;
-        themeToggle.textContent = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
-        localStorage.setItem('theme', theme);
-      };
-
-      themeToggle.addEventListener('click', () => {
-        const newTheme = body.dataset.theme === 'dark' ? 'light' : 'dark';
-        applyTheme(newTheme);
-      });
-
-      document.addEventListener('DOMContentLoaded', () => {
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        applyTheme(savedTheme);
-        openNav();
-      });
-    </script>
-    <script>
-      function openNav() {
-        document.getElementById("sidebar").style.width = "250px";
-      }
-      function closeNav() {
-        document.getElementById("sidebar").style.width = "0";
-      }
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

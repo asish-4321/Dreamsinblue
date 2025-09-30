@@ -1,79 +1,116 @@
- body {
-  margin: 0;
-  font-family: 'Montserrat', Arial, sans-serif;
-  
-  background: #807ea8;
-background: linear-gradient(90deg, rgb(46, 44, 44) 0%, rgb(13, 13, 13) 35%, rgb(57, 56, 56) 100%);
-  height: 100px;
-  color: #ece7e7;;
-  
-
-    }
-
-    .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background:purple;
-  padding: 18px 48px;
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  box-shadow: 0 1px 12px rgba(34, 40, 84, 0.07);
-}
-.logo {
-  color: #fff;
-  font-weight: 700;
-  font-size: 25px;
-  letter-spacing: 1.5px;
-  margin-right: 60px;
+main {
+    padding: 2rem 1rem;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 34px;
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    text-align: center;
 }
 
-.nav-links a {
-  color: #eef1f7;
-  text-decoration: none;
-  font-size: 1.08rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  position: relative;
-  transition: color 0.2s;
-  padding: 6px 12px;
-  border-radius: 6px;
+.faq-container h2 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
 }
-.nav-links a:hover {
-  color: #ffd664;
-  background: rgba(255, 214, 100, 0.13);
-  transition: all 0.22s;
+
+/* Accordion Styling */
+details {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: left;
 }
-.search {
-  margin-left: 2.5rem;
+
+summary {
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    list-style: none; /* Remove default marker */
+    position: relative;
+    transition: background-color 0.2s;
 }
-.search input {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 23px;
-  background: #fff;
-  font-size: 20px;
-  box-shadow: 0 1px 6px rgba(60,80,120,0.07);
-  transition: box-shadow 0.2s;
+
+summary:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
-th,td{border : 2px solid rgb(228, 213, 226); padding: 10px; text-align:center; }
-        th{ background-color: rgb(214, 14, 171);}
-        footer {
-  padding: 26px 0 20px 0;
-  background: #222854;
-  color: #f6f7fa;
-  text-align: center;
-  font-size: 16px;
-  letter-spacing: 2px;
-  margin-top: 55px;
+
+/* Custom animated marker */
+summary::after {
+    content: '+';
+    position: absolute;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    transition: transform 0.3s ease-in-out;
 }
-.lodos{
-    gap: 25px;
+
+details[open] > summary::after {
+    transform: rotate(45deg);
+}
+
+details p {
+    padding: 0 1.5rem 1rem 1.5rem;
+    margin: 0;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+/* Contact Form Styling */
+.faq-contact {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.faq-contact h3 {
+    margin-top: 0;
+    font-size: 1.8rem;
+}
+
+.faq-contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.faq-contact label {
+    font-weight: bold;
+}
+
+.faq-contact textarea,
+.faq-contact button {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+}
+
+.faq-contact textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.faq-contact button {
+    background-color: var(--mic-color, #ffd700);
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+}
+
+.faq-contact button:hover {
+    background-color: #ffc400;
 }

@@ -2,59 +2,23 @@
 <html lang="en">
 <head>
     <title>Document</title>
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="main.css">
+    <!-- Page-specific CSS -->
     <link rel="stylesheet" href="faqs.css">
-    <style>
-    #mic-btn {
-        background: none;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        padding: 0 10px;
-        color: #ffd700; /* Gold color */
-        text-shadow: 1px 1px 2px #000; /* Add a text shadow for better visibility */
-        transition: transform 0.2s, color 0.2s;
-        animation: pulse 1.5s infinite alternate; /* Add a subtle pulse animation */
-    }
-
-    #mic-btn:hover {
-        transform: scale(1.2);
-        color: #fff; /* Change color on hover */
-    }    
-        transition: transform 0.2s;
-      }
-      #theme-toggle {
-        background: none; border: none; font-size: 22px; cursor: pointer;
-        color: #ffd700; padding: 0 10px;
-      }
-      .sidebar {
-        height: 100%; width: 0; position: fixed; z-index: 100; top: 0; left: 0;
-        background-color: #111; overflow-x: hidden; transition: 0.5s; padding-top: 60px;
-      }
-      .sidebar a {
-        padding: 8px 8px 8px 32px; text-decoration: none; font-size: 22px;
-        color: #818181; display: block; transition: 0.3s;
-      }
-      .sidebar a:hover { color: #f1f1f1; }
-      .sidebar .close-btn {
-        position: absolute; top: 0; right: 25px; font-size: 36px; margin-left: 50px;
-      }
-      .open-btn {
-        font-size: 25px; cursor: pointer; background: none; border: none; color: #ffd700;
-        padding: 10px 15px;
-      }
-      #mic-btn:hover { transform: scale(1.2); }
-    </style>
 </head>
 <body data-theme="dark">
+    <div id="overlay" onclick="closeNav()"></div>
     <div id="sidebar" class="sidebar">
       <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
-      <a href="/Dreamsinblue/index.html" data-key="nav_home">Home</a>
-      <a href="/Dreamsinblue/albums.html" data-key="nav_albums">Albums</a>
-      <a href="/Dreamsinblue/events.html" data-key="nav_events">Events</a>
-      <a href="/Dreamsinblue/faqs.html" data-key="nav_faqs">FAQs</a>
-      <a href="/Dreamsinblue/join.html" data-key="nav_join">Join</a>
-      <a href="/Dreamsinblue/book.html" data-key="nav_book">Book Now</a>
-      <a href="#" id="theme-toggle">🌙 Dark Mode</a>
+      <a href="/Dreamsinblue/index.html" data-key="nav_home">🏠 Home</a>
+      <a href="/Dreamsinblue/albums.html" data-key="nav_albums">💿 Albums</a>
+      <a href="/Dreamsinblue/events.html" data-key="nav_events">🎟️ Events</a>
+      <a href="/Dreamsinblue/faqs.html" data-key="nav_faqs">❓ FAQs</a>
+      <a href="/Dreamsinblue/join.html" data-key="nav_join">🤝 Join</a>
+      <a href="/Dreamsinblue/book.html" data-key="nav_book">📅 Book Now</a>
+      <a href="/Dreamsinblue/chat.html" data-key="nav_chatbox">💬 Chatbox</a>
+      <a href="#" id="theme-toggle" class="sidebar-toggle">🌙 Dark Mode</a>
     </div>
     <section class="header">
       <button class="open-btn" onclick="openNav()">☰</button>
@@ -72,136 +36,68 @@
 </nav>
  <button id="mic-btn" title="Voice Commands">🎸</button>
     </section>
-    <h2>🎶 Frequently Asked Questions</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Question</th>
-        <th>Answer</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Where can I listen to your music?</td>
-        <td>You can stream our music on Spotify, Apple Music, YouTube, and SoundCloud. Visit our <a href="albums.html">Music</a> page for direct links.</td>
-      </tr>
-      <tr>
-        <td>How can I book the band for an event?</td>
-        <td>Please use the <a href="book.html">Contact</a> form on our website or email us at booking@yourband.com with details of your event.</td>
-      </tr>
-      <tr>
-        <td>Do you sell band Books?</td>
-        <td>Yes! Check out our <a href="store.html"> Store</a> for t-shirts, posters, vinyl, and more.</td>
-      </tr>
-      <tr>
-        <td>When is your next live show?</td>
-        <td>Visit our <a href="events.html">upcoming Events</a> page for all upcoming concerts and ticket info.</td>
-      </tr>
-      <tr>
-        <td>Can I join your fan club or mailing list?</td>
-        <td>Visit our <a href="join.html">Join us </a>To become a member of our band</td>
-      </tr>
-      <tr>
-        <td>Are you available for interviews or press?</td>
-        <td>Yes, we love connecting with media. Please see our <a href="presskit.html">Press Kit</a> or reach out via our <a href="contact.html">Contact</a> page.</td>
-      </tr>
-    </tbody>
-  </table>
-    <textarea name="" id="message" rows="4" cols="50" 
-          placeholder="enter your queries (optional)" style="background: transparent;"></textarea><br>
+    <main>
+        <div class="faq-container">
+            <h2>🎶 Frequently Asked Questions</h2>
+
+            <details>
+                <summary>Where can I listen to your music?</summary>
+                <p>You can stream our music on Spotify, Apple Music, YouTube, and SoundCloud. Visit our <a href="albums.html">Music</a> page for direct links.</p>
+            </details>
+
+            <details>
+                <summary>How can I book the band for an event?</summary>
+                <p>Please use the <a href="book.html">Booking</a> form on our website or email us at booking@yourband.com with details of your event.</p>
+            </details>
+
+            <details>
+                <summary>Do you sell band merchandise?</summary>
+                <p>Yes! Check out our online <a href="store.html">Store</a> for t-shirts, posters, vinyl, and more. (Note: This page doesn't exist yet).</p>
+            </details>
+
+            <details>
+                <summary>When is your next live show?</summary>
+                <p>Visit our <a href="events.html">Events</a> page for all upcoming concerts and ticket info.</p>
+            </details>
+
+            <details>
+                <summary>Can I join your fan club or mailing list?</summary>
+                <p>Absolutely! Visit our <a href="join.html">Join</a> page to sign up for the mailing list and become a member of our fan nation.</p>
+            </details>
+
+            <details>
+                <summary>Are you available for interviews or press?</summary>
+                <p>Yes, we love connecting with media. Please see our <a href="presskit.html">Press Kit</a> or reach out via our <a href="book.html">Booking</a> page for inquiries. (Note: Press Kit page doesn't exist yet).</p>
+            </details>
+        </div>
+
+        <div class="faq-contact">
+            <h3>Still have questions?</h3>
+            <form action="https://formspree.io/f/your_faq_form_id" method="POST"> <!-- TODO: Replace with your Formspree ID -->
+                <label for="faq-query">Send us your query:</label>
+                <textarea name="query" id="faq-query" rows="4" placeholder="Enter your question here..."></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
 
     <footer>
        <nav class="lodos">
-   <a href="https://share.google/n7slkBgBkH8BDnFSy"><img src="assets/instgram logo 2.png" alt="" height="20px" width="20px"></a>
-   <a href="https://share.google/3Bi2MlYUhAqQ2VBtm"><img src="assets/yt logo .png" alt="" height="20px" width="20px"></a>
-<a href="https://share.google/OBps0JlrQHSxq4wz0"><img src="assets/Screenshot 2025-09-05 104337.png" alt="" height="15px" width="15px"></a>
-   <a href="https://share.google/ambUxQYodVppYMhAw"><img src="assets/Screenshot 2025-09-05 104654.png" alt="" height="15px" width="20px"></a>
-
+           <a href="https://share.google/n7slkBgBkH8BDnFSy"><img src="assets/instgram logo 2.png" alt="Instagram" height="20px" width="20px"></a>
+           <a href="https://share.google/3Bi2MlYUhAqQ2VBtm"><img src="assets/yt logo .png" alt="YouTube" height="20px" width="20px"></a>
+           <a href="https://share.google/OBps0JlrQHSxq4wz0"><img src="assets/Screenshot 2025-09-05 104337.png" alt="X (formerly Twitter)" height="15px" width="15px"></a>
+           <a href="https://share.google/ambUxQYodVppYMhAw"><img src="assets/Screenshot 2025-09-05 104654.png" alt="Facebook" height="15px" width="20px"></a>
    </nav>
-        --------------------------------&copy;<a href="#">copyright disclaimer</a>-----------------------------------
+        <span class="divider">--------------------------------</span>
+        &copy;<a href="#" data-key="copyright">copyright disclaimer</a>
+        <span class="divider">-----------------------------------</span>
     </footer>
-    <script>
-    const micBtn = document.getElementById('mic-btn');
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-    if (SpeechRecognition) {
-      const recognition = new SpeechRecognition();
-
-      const commands = {
-        'home': '/Dreamsinblue/index.html',
-        'albums': '/Dreamsinblue/albums.html',
-        'events': '/Dreamsinblue/events.html',
-        'faqs': '/Dreamsinblue/faqs.html',
-        'book now': '/Dreamsinblue/book.html',
-        'chatbox': '/Dreamsinblue/chat.html'
-      };
-
-      micBtn.addEventListener('click', () => {
-        recognition.start();
-      });
-
-      recognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript.trim().toLowerCase();
-        console.log('Heard:', transcript);
-
-        if (commands[transcript]) {
-          window.location.href = commands[transcript];
-        } else {
-          alert(`Command not recognized: "${transcript}"`);
-        }
-      };
-
-       micBtn.onerror = (event) => {
-        alert('Error occurred in recognition: ' + event.error);
-      };
-    } else {
-      micBtn.style.display = 'none';
-      console.log('Speech Recognition not supported in this browser.');
-    }
-    </script>
     <script
       src="https://app.livechatai.com/embed.js"
       data-id="cmfz1zexb0001la04iulo7jea"
       async defer>
     </script>
-    <script>
-      const themeToggle = document.getElementById('theme-toggle');
-      const body = document.body;
-
-      const applyTheme = (theme) => {
-        body.dataset.theme = theme;
-        themeToggle.textContent = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
-        localStorage.setItem('theme', theme);
-      };
-
-      themeToggle.addEventListener('click', () => {
-        const newTheme = body.dataset.theme === 'dark' ? 'light' : 'dark';
-        applyTheme(newTheme);
-      });
-
-      document.addEventListener('DOMContentLoaded', () => {
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        applyTheme(savedTheme);
-        openNav();
-      });
-    </script>
-    <script>
-      function openNav() {
-        document.getElementById("sidebar").style.width = "250px";
-      }
-      function closeNav() {
-        document.getElementById("sidebar").style.width = "0";
-      }
-    </script>
+    <script src="js/main.js"></script>
 </body>
-    <style>
-    @keyframes pulse {
-        from {
-            transform: scale(1);
-        }
-        to {
-            transform: scale(1.1);
-        }
-    }
 </html>
